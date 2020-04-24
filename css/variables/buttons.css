@@ -1,0 +1,20 @@
+:root {
+    --button-success-color: #fff;
+
+    --button-success-bgcolor: #5cb85c;
+    --button-success-bgcolor-hover: #419641;
+
+    --button-success-border-color: #4cae4c;
+    --button-success-border-color-hover: #398439;
+    --button-success-border-color-active: #3e8f3e;
+
+    --button-success-bgimage-webkit-linear-gradient: -webkit-linear-gradient(top,#5cb85c 0,#419641 100%);
+    --button-success-bgimage-o-linear-gradient: -o-linear-gradient(top,#5cb85c 0,#419641 100%);
+    --button-success-bgimage-webkit-gradient: -webkit-gradient(linear,left top,left bottom,from(#5cb85c),to(#419641));
+    --button-success-bgimage-linear-gradient: linear-gradient(to bottom,#5cb85c 0,#419641 100%);
+    --button-success-filter-a: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff5cb85c', endColorstr='#ff419641', GradientType=0);
+    --button-success-filter-b: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+
+    --button-success-boxshadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+    --button-success-boxshadow-active: inset 0 3px 5px rgba(0,0,0,.125);
+}

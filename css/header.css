@@ -1,0 +1,22 @@
+header {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: var(--header-bgcolor);
+    -webkit-box-shadow: var(--header-boxshadow);
+    box-shadow:         var(--header-boxshadow);
+}
+
+.img-logo {
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}

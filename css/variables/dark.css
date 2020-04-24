@@ -1,0 +1,35 @@
+:root {
+    --body-bgcolor: #1E1E1E;
+    --body-color: #FFFFFF;
+
+    --header-boxshadow: none;
+    --header-bgcolor: #0a0a0a;
+
+    --menu-nav-dropdown-bgcolor: #0a0a0a;
+    --menu-nav-dropdown-border-color: #0a0a0a;
+    --menu-nav-dropdown-border-bottom-color: #0a0a0a;
+    --menu-nav-dropdown-boxshadow: none;
+    --menu-navbar-button-hover-bgcolor: rgb(37, 37, 37);
+    --menu-navbar-button-hover-border-color: rgb(40, 40, 40);
+    --menu-sidebar-menu-bgcolor: #0a0a0a;
+    --menu-sidebar-menu-boxshadow: none;
+
+    --footer-bgcolor: #151515;
+    --footer-color: #777777;
+
+    --icon-bgcolor: #464646;
+    --icon-border-color: #8A8A8A;
+    --icon-boxshadow: 0px 0px 10px 0px rgba(255, 255, 255, 0.75);
+
+    --modal-bgcolor: /*#464646*/#333333;
+    --modal-border-color: #414141;
+    --modal-color: #FFFFFF;
+    --modal-title-bgcolor: #1D1D1D;
+    --modal-boxshadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    --modal-pre-bgcolor: #1D1D1D;
+    --modal-pre-color: #93b6ee;
+
+    --input-text-bgcolor: #151515;
+    --input-text-border-color: #101010;
+    --input-text-border-color-focus: #050505;
+}

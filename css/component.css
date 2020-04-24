@@ -1,0 +1,24 @@
+#component-container {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 0 30px;
+}
+
+#component-title {
+    padding: 20px 0;
+    margin-bottom: 0.7em;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+    #component-title h2 {
+        margin: 0;
+    }
+
+#demo-container {
+    /**/
+}

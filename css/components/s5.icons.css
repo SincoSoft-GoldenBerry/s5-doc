@@ -1,0 +1,55 @@
+.icons-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+    align-items: center;
+}
+
+div.icono {
+    background-color: var(--icon-bgcolor);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 80px;
+    max-width: 80px;
+    height: 80px;
+    max-height: 80px;
+    padding: 10px;
+    margin: 10px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    flex-grow: 1;
+}
+
+div.icono:hover,
+div.icono.hover {
+    border-color: var(--icon-border-color);
+    -webkit-box-shadow: var(--icon-boxshadow);
+    box-shadow:         var(--icon-boxshadow);
+
+    width: 84px;
+    max-width: 84px;
+    height: 84px;
+    max-height: 84px;
+    margin: 8px;
+    padding: 12px;
+}
+
+    .contenido-modal-icono > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        margin-bottom: 8px;
+    }
+
+    .contenido-modal-icono > pre {
+        background-color: var(--modal-pre-bgcolor);
+        color: var(--modal-pre-color);
+        margin: 10px 0;
+        border-radius: 5px;
+    }

@@ -1,0 +1,23 @@
+footer {
+    padding: 40px 0;
+    background-color: var(--footer-bgcolor);
+    color: var(--footer-color);
+    text-align: center;
+    font-size: 12px;
+}
+
+footer * {
+    color: var(--footer-color);
+    font-size: 12px;
+}
+
+@media (max-width: 800px) {
+    footer,
+    footer * {
+        font-size: 8px;
+    }
+
+    footer {
+        padding: 20px 0;
+    }
+}

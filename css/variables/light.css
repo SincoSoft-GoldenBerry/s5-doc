@@ -1,0 +1,35 @@
+:root {
+    --body-bgcolor: #F3F3F3;
+    --body-color: #333333;
+
+    --header-boxshadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+    --header-bgcolor: #f8f8f8;
+
+    --menu-nav-dropdown-bgcolor: #f8f8f8;
+    --menu-nav-dropdown-border-color: #DDDDDD;
+    --menu-nav-dropdown-border-bottom-color: #CCCCCC;
+    --menu-nav-dropdown-boxshadow: 0 0px 12px rgba(0, 0, 0, .175);
+    --menu-navbar-button-hover-bgcolor: rgb(235, 233, 233);
+    --menu-navbar-button-hover-border-color: rgb(240, 240, 240);
+    --menu-sidebar-menu-bgcolor: #f8f8f8;
+    --menu-sidebar-menu-boxshadow: 3px 4px 5px 0px rgba(0,0,0,.075);
+
+    --footer-bgcolor: #dcdcdc;
+    --footer-color: #777777;
+
+    --icon-bgcolor: rgb(196, 196, 196);
+    --icon-border-color: #909090;
+    --icon-boxshadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+
+    --modal-bgcolor: #DADADA;
+    --modal-border-color: rgb(185, 185, 185);
+    --modal-color: #333333;
+    --modal-title-bgcolor: #A9A8A8;
+    --modal-boxshadow: 0px 0px 10px 0px rgba(66, 66, 66, 0.75);
+    --modal-pre-bgcolor: #1E1E1E;
+    --modal-pre-color: #93b6ee;
+
+    --input-text-bgcolor: #dcdcdc;
+    --input-text-border-color: #cacaca;
+    --input-text-border-color-focus: #a0a0a0;
+}

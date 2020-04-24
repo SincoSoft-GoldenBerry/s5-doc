@@ -1,0 +1,15 @@
+.autocompletes-container {
+
+}
+
+.autocompletes-container input[type="text"] {
+    background-color: var(--input-text-bgcolor);
+    border: 1px solid var(--input-text-border-color);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+    .autocompletes-container input[type="text"]:focus,
+    .autocompletes-container input[type="text"]:active {
+        border-color: var(--input-text-border-color-focus);
+    }
