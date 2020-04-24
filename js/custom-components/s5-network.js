@@ -41,7 +41,7 @@ class Network extends HTMLElement {
         this._agregarEventos();
     }
 
-    _comprobarConexion = async () => {
+    async _comprobarConexion() {
         this.wrapper.classList.remove.apply(this.wrapper.classList, ['offline', 'online']);
         if (navigator.onLine) {
             try {
@@ -57,7 +57,7 @@ class Network extends HTMLElement {
         this._online = false;
     }
 
-    _agregarEventos = () => {
+    _agregarEventos() {
         const comprobarConexion = () => this._comprobarConexion();
         window.addEventListener('online', comprobarConexion);
         window.addEventListener('offline', comprobarConexion);

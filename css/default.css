@@ -178,7 +178,7 @@ button > * {
 
 @media (max-width: 700px) {
     .network {
-        top: 8px;
+        top: 12px;
         bottom: inherit;
     }
 
