@@ -1,0 +1,69 @@
+section {
+    display: flex;
+    border-radius: 5px;
+    background-color: #1e1e1e;
+}
+
+.lines {
+    width: 50px;
+    padding: 15px 5px;
+    text-align: right;
+}
+
+.code-line {
+    color: #A0A0A0;
+}
+
+pre,
+.normal {
+    color: #93b6ee;
+}
+
+pre {
+    font-size: .8em;
+    width: 100%;
+    /*white-space: pre-wrap;*/
+    margin: 0;
+    padding: 15px;
+    overflow-x: auto;
+}
+
+.character {
+    color: #FFFFFF;
+}
+
+.reserved_a {
+    color: #2b5391;
+}
+
+.reserved_b {
+    color: #bc8aa3;
+}
+
+.object {
+    color: #6bb8a8;
+}
+.number {
+    color: #c3c69b;
+}
+.method {
+    color: #dfd9a7;
+}
+
+.string,
+.string *,
+.regex,
+.regex * {
+    color: #c1917d;
+}
+
+.comment,
+.comment * {
+    color: #666666;
+}
+
+@media (max-width: 700px) {
+    section {
+        border-radius: 0;
+    }
+}

@@ -47,35 +47,16 @@ window['app'].define('components/s5.icons', [], () => {
             definicion = s5.createElem('span', { 'class': 'normal' });
             definicion.innerHTML = htmlDefinicion;
 
+            const codigo = s5.createElem('s5-code');
+
+            codigo.loadCode(`/*Uso con s5.js v1 y v2*/\nSinco.iconos.BoxPacking(dim, bgColor);\n\n/*Uso con s5.js v2*/\ns5.iconos.BoxPacking(dim, bgColor);`);
+
             contenidoModal.insert([
                 s5.createElem('div').insert(
                     s5.createElem('div', { 'class': 'icono hover' }).insert(iconoSinco.cloneNode(true))
                 ),
                 s5.createElem('span').insert(document.createTextNode('Código JS para su uso:')),
-                s5.createElem('pre').insert([
-                    s5.createElem('span', { 'class': 'comment' }).insert(document.createTextNode('//Uso con s5.js v1 y v2')),
-                    document.createElement('br'),
-                    s5.createElem('span', { 'class': 'object' }).insert(document.createTextNode('Sinco')),
-                    s5.createElem('span', { 'class': 'character' }).insert(document.createTextNode('.')),
-                    document.createTextNode('iconos'),
-                    s5.createElem('span', { 'class': 'character' }).insert(document.createTextNode('.')),
-                    s5.createElem('span', { 'class': 'method' }).insert(document.createTextNode(iconoClick)),
-                    s5.createElem('span', { 'class': 'character' }).insert(document.createTextNode('(')),
-                    definicion,
-                    s5.createElem('span', { 'class': 'character' }).insert(document.createTextNode(');')),
-                    document.createElement('br'),
-                    document.createElement('br'),
-                    s5.createElem('span', { 'class': 'comment' }).insert(document.createTextNode('//Uso con s5.js v2')),
-                    document.createElement('br'),
-                    s5.createElem('span', { 'class': 'object' }).insert(document.createTextNode('s5')),
-                    s5.createElem('span', { 'class': 'character' }).insert(document.createTextNode('.')),
-                    document.createTextNode('iconos'),
-                    s5.createElem('span', { 'class': 'character' }).insert(document.createTextNode('.')),
-                    s5.createElem('span', { 'class': 'method' }).insert(document.createTextNode(iconoClick)),
-                    s5.createElem('span', { 'class': 'character' }).insert(document.createTextNode('(')),
-                    definicion.cloneNode(true),
-                    s5.createElem('span', { 'class': 'character' }).insert(document.createTextNode(');'))
-                ])
+                codigo
             ]);
 
             modal.innerHTML = '';
