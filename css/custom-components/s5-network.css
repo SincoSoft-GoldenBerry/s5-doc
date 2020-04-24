@@ -1,0 +1,30 @@
+aside {
+    font-size: .8em;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+aside > .fa-slash {
+    position: absolute;
+    transition: all ease 1s;
+}
+
+aside:not(.offline) > .fa-slash {
+    opacity: 0;
+}
+
+aside.offline > .fa-slash {
+    opacity: 1;
+}
+
+aside *,
+aside.offline * {
+    color: var(--footer-color);
+}
+
+aside.online * {
+    color: #4caf50;
+}

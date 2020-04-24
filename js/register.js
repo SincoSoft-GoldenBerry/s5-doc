@@ -1,4 +1,5 @@
 (async () => {
+    
     let newWorker;
 
     const newVersion = s5.get('.new-version').shift();

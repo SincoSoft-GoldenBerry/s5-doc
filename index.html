@@ -12,16 +12,13 @@
     try {
         eval('window["a"] = () => {};');
 
-        if (window.location.protocol !== 'https:')
-            window.location.href = window.location.href.replace(window.location.protocol, 'https:');
+        if (!/localhost|192/i.test(window.location.host)){
+            if (window.location.protocol !== 'https:')
+                window.location.href = window.location.href.replace(window.location.protocol, 'https:');
+        }
     } catch (e) {
         window.location.href = 'unsupported.html';
     }
-
-    (function(){
-		if (window.location.protocol !== 'https:')
-			window.location.href = window.location.href.replace(window.location.protocol, 'https:')
-	})();
 
     </script>
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -48,12 +45,13 @@
 
     <script src="js/cookies.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.js" onload="s5 = Sinco"></script>
+    <script src="https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/v2/s5.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.request.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.icons.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.autocomplete.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.dragdrop.js"></script>
 
+    <script src="js/custom-components/s5-network.js"></script>
     <script src="js/custom-components/s5-modal.js"></script>
 </head>
 
@@ -132,6 +130,7 @@
         <div>SincoSoft S.A.S. - Goldenberry.</div>
         <div>Copyright &copy; <span class="year"></span>. Todos los derechos reservados</div>
     </footer>
+    <s5-network class="network"></s5-network>
     <s5-modal id="modal"></s5-modal>
     <script src="js/register.js"></script>
     <script src="js/init.js"></script>

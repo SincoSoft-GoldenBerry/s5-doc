@@ -50,6 +50,14 @@
                 s5.get('.current').forEach(c => c.classList.remove('current'));
             };
 
+            const stickyTitle = container => {
+                const selector = container.id ? `#${container.id}` : `.${container.className.split(' ').join('.')}`;
+                const elements = s5.get(`${selector} > [class*="title"], ${selector} > [id*="title"]`);
+                s5.map(elements, el => el.classList.add('sticky-title'));
+                if (elements.length > 0)
+                    elements[0].nextSibling.classList.add('sticky-sibling');
+            };
+
             const navegar = () => {
                 limpiar();
 
@@ -65,6 +73,8 @@
                 sideBar.classList.remove('visible');
             
                 container.insert(design);
+
+                stickyTitle(design);
             };
 
             navegar();

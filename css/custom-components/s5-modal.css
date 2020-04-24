@@ -14,6 +14,7 @@ aside {
     justify-content: center;
     align-items: center;
     align-content: center;
+    z-index: 2;
 }
 
 aside.show {

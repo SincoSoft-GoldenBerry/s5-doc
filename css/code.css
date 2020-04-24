@@ -82,3 +82,15 @@ pre {
 .comment * {
     color: #666666;
 }
+
+@media (max-width: 700px) {
+    #code-container {
+        padding: 0;
+    }
+    #code-title {
+        padding: 20px 30px;
+    }
+    #lines-code-container {
+        border-radius: 0;
+    }
+}

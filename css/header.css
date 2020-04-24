@@ -8,6 +8,7 @@ header {
     left: 0;
     right: 0;
     z-index: 10;
+    height: var(--header-height);
     background-color: var(--header-bgcolor);
     -webkit-box-shadow: var(--header-boxshadow);
     box-shadow:         var(--header-boxshadow);
