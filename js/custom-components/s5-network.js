@@ -43,18 +43,26 @@ class Network extends HTMLElement {
 
     async _comprobarConexion() {
         this.wrapper.classList.remove.apply(this.wrapper.classList, ['offline', 'online']);
+
+        const _offline = () => {
+            this.wrapper.classList.add('offline');
+            this._online = false;
+        };
+
         if (navigator.onLine) {
             try {
                 await s5.hr.get('ping.json');
                 this.wrapper.classList.add('online');
                 this._online = true;
-                return;
             }
             catch (e) {
+                _offline();
+            }
+            finally {
+                return;
             }
         }
-        this.wrapper.classList.add('offline');
-        this._online = false;
+        _offline();
     }
 
     _agregarEventos() {

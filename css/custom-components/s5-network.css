@@ -1,3 +1,11 @@
+@keyframes blinkingcolor{
+    0%{		opacity: 1;	    }
+    25%{    opacity: .75;   }
+    50%{    opacity: .5;   }
+    75%{    opacity: .75;   }
+	100%{	opacity: 1;	}
+}
+
 aside {
     font-size: .8em;
     pointer-events: none;
@@ -5,6 +13,10 @@ aside {
     justify-content: center;
     align-items: center;
     align-content: center;
+}
+
+aside:not(.offline):not(.online) {
+    animation: blinkingcolor .8s infinite;
 }
 
 aside > .fa-slash {
