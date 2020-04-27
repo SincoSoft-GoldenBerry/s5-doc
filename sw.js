@@ -10,10 +10,12 @@ const limitCacheSize = (name, size) =>
         })
     );
 
-const assets = [
+const assets = (s5v1, s5v2) => ([
     './',
     './index.html',
     './offline.html',
+    './version.js',
+
     './js/components/prototypes.js',
     './js/components/s5.autocomplete.js',
     './js/components/s5.icons.js',
@@ -28,20 +30,21 @@ const assets = [
     './js/register.js',
     './js/theme-chooser.js',
     './js/who.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/v2/s5.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/v2/s5.min.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.autocomplete.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.carousel.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.components.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.dragdrop.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.icons.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.indicator.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.notifications.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.progress.circular.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.request.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.switch.js',
-    'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/s5.tour.js',
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v1}/s5.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v2}/s5.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v2}/s5.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v2}/s5.min.js.map`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v1}/s5.autocomplete.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v1}/s5.carousel.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v2}/s5.components.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v1}/s5.dragdrop.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v1}/s5.icons.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v1}/s5.indicator.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v1}/s5.notifications.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v1}/s5.progress.circular.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v2}/s5.request.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v1}/s5.switch.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${s5v1}/s5.tour.js`,
 
     './css/components/s5.autocomplete.css',
     './css/components/s5.icons.css',
@@ -119,15 +122,24 @@ const assets = [
     './images/favicon.ico',
     './images/light-Logo_S5.png',
     './images/Logo_S5_square.png'
-];
+]);
 
-self.addEventListener('install', event =>
+self.addEventListener('install', event => {
+    const l = new URL(location);
+    const v1 = l.searchParams.get('v1');
+    const v2 = l.searchParams.get('v2');
     event.waitUntil(
         caches
             .open(staticCacheName)
-            .then(cache => cache.addAll(assets))
-    )
-);
+            .then(cache => 
+                cache.addAll(assets(v1, v2))
+                /*assets(v1, v2).forEach(a => {
+                    cache.add(a)
+                        .catch(e => console.log(a));
+                })*/
+            )
+    );
+});
 
 self.addEventListener('activate', event =>
     event.waitUntil(

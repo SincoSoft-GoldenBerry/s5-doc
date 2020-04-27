@@ -1,7 +1,15 @@
 window['app'].define('code', [], () => {
-    const urlBase = 'https://cdn.jsdelivr.net/gh/SincoSoft-GoldenBerry/S5@master/';
+    const { v1, v2 } = window['app-version'];
+    const urlBase = 'https://cdn.jsdelivr.net/npm/s5-js';
 
     const crearDiseno = url => {
+        if (/v2/i.test(url)){
+            url = `${urlBase}@${v2}/${url.split('v2/').join('')}`;
+        }
+        else {
+            url = `${urlBase}@${v1}/${url}`;
+        }
+
         const menu = document.querySelector('.current > a');
         document.title = `¡El código! - ${menu.textContent} - By: GoldenBerry`;
 
@@ -38,6 +46,6 @@ window['app'].define('code', [], () => {
     };
 
     return {
-        init: scriptUrl => crearDiseno(urlBase + scriptUrl)
+        init: crearDiseno
     };
 });

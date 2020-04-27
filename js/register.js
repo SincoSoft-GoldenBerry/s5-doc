@@ -8,7 +8,8 @@
 
     if ('serviceWorker' in navigator) {
         try {
-            const worker = await navigator.serviceWorker.register('./sw.js');
+            const { v1, v2 } = window['app-version'];
+            const worker = await navigator.serviceWorker.register(`./sw.js?v1=${v1}&v2=${v2}`,);
 
             worker.addEventListener('updatefound', () => {
                 newWorker = worker.installing;
