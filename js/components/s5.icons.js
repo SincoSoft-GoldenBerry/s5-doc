@@ -41,15 +41,11 @@ window['app'].define('components/s5.icons', [], () => {
             let definicion = s5.iconos[iconoClick].toString();
 
             const htmlDefinicion = reg.exec(definicion).shift()
-                                        .replace(/\(|\)/g, '')
-                                        .replace(/\,/g, '<span class="character">,</span>');
-            
-            definicion = s5.createElem('span', { 'class': 'normal' });
-            definicion.innerHTML = htmlDefinicion;
+                                        .replace(/\(|\)/g, '');
 
             const codigo = s5.createElem('s5-code');
 
-            codigo.loadCode(`/*Uso con s5.js v1 y v2*/\nSinco.iconos.BoxPacking(dim, bgColor);\n\n/*Uso con s5.js v2*/\ns5.iconos.BoxPacking(dim, bgColor);`);
+            codigo.loadCode(`/*Uso con s5.js v1 y v2*/\nSinco.iconos.${iconoClick}(${htmlDefinicion});\n\n/*Uso con s5.js v2*/\ns5.iconos.${iconoClick}(${htmlDefinicion});`);
 
             contenidoModal.insert([
                 s5.createElem('div').insert(

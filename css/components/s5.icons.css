@@ -14,13 +14,13 @@ div.icono {
     max-width: 80px;
     height: 80px;
     max-height: 80px;
-    padding: 10px;
     margin: 10px;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     align-content: center;
+    transition: box-shadow .2s, border-color .2s;
 
     flex-grow: 1;
 }
@@ -36,7 +36,6 @@ div.icono.hover {
     height: 84px;
     max-height: 84px;
     margin: 8px;
-    padding: 12px;
 }
 
     .contenido-modal-icono > div {
