@@ -48,9 +48,6 @@ const assets = (s5v1, s5v2) => ([
 
     './css/components/s5.autocomplete.css',
     './css/components/s5.icons.css',
-    './css/custom-components/s5-modal.css',
-    './css/custom-components/s5-network.css',
-    './css/custom-components/s5-code.css',
     './css/fa/css/all.css',
     './css/fa/css/all.min.css',
     './css/fa/css/brands.css',

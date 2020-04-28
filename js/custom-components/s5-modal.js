@@ -37,9 +37,68 @@ class Modal extends HTMLElement {
 
         const css = document.createElement('style');
         css.innerHTML = `
-            @import "css/fa/css/all.css";
-            @import "css/default.css";
-            @import "css/custom-components/s5-modal.css";
+        aside, aside *{ transition: none !important; }
+
+        aside {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(167, 166, 166, 0.82);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            z-index: 2;
+        }
+
+        aside.show { display: flex; }
+
+        aside > div {
+            border: 1px solid var(--modal-border-color);
+            color: var(--modal-color);
+            border-radius: 10px;
+            padding: 5px;
+            max-width: 95%;
+            background-color: var(--modal-bgcolor);
+            font-size: 1.2em;
+            -webkit-box-shadow: var(--modal-boxshadow);
+            box-shadow:         var(--modal-boxshadow);
+        }
+
+        .modal-title {
+            border-radius: 5px;
+            background-color: var(--modal-title-bgcolor);
+            padding: 8px 10px;
+            cursor: move;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title button {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+            padding: 5px 10px !important;
+            cursor: pointer;
+            border-radius: 2px;
+            outline: none;
+            border: none;
+            background-color: #00796b;
+            color: #FFFFFF;
+            transition: all .2s !important;
+        }
+
+            .modal-title button:hover {
+                background-color: #009688;
+                -webkit-box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+                box-shadow: 0 3px 3px 0 rgba(0,0,0,0.14), 0 1px 7px 0 rgba(0,0,0,0.12), 0 3px 1px -1px rgba(0,0,0,0.2);
+            }
+
+        .modal-body {
+            padding: 10px;
+            font-size: 0.8em;
+        }
         `;
 
         shadow.appendChild(css);
@@ -71,7 +130,7 @@ class Modal extends HTMLElement {
             <div style="min-width: ${this.minWidth}%; position: absolute;" class="modal">
                 <div class="modal-title">
                     ${this.title}
-                    <button type="button" class="btn success"><i class="fa fa-times"></i></button>
+                    <button type="button" class="btn success" title="Cerrar modal (Esc)">x</button>
                 </div>
                 <div class="modal-body">
                     <slot></slot>
@@ -89,7 +148,7 @@ class Modal extends HTMLElement {
         this.wrapper.addEventListener('click', close);
         this.wrapper.querySelector('button').addEventListener('click', close);
 
-        this.wrapper.querySelectorAll('div, *:not(.btn):not(.fa)').forEach(element => 
+        this.wrapper.querySelectorAll('div, *:not(.btn)').forEach(element => 
             element.addEventListener('click', e => {
                 e.stopPropagation();
                 e.stopImmediatePropagation();

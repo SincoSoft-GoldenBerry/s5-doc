@@ -19,8 +19,39 @@ class Network extends HTMLElement {
 
         const css = document.createElement('style');
         css.innerHTML = `
-            @import "css/fa/css/all.css";
-            @import "css/custom-components/s5-network.css";
+        @import "css/fa/css/all.css";
+        
+        @keyframes blinkingcolor{
+            0%{		opacity: 1;	    }
+            25%{    opacity: .75;   }
+            50%{    opacity: .5;   }
+            75%{    opacity: .75;   }
+            100%{	opacity: 1;	}
+        }
+        
+        aside {
+            font-size: .8em;
+            pointer-events: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+        
+        aside:not(.offline):not(.online) { animation: blinkingcolor .8s infinite; }
+        
+        aside > .fa-slash {
+            position: absolute;
+            transition: all ease 1s;
+        }
+        
+        aside:not(.offline) > .fa-slash { opacity: 0; }
+        
+        aside.offline > .fa-slash { opacity: 1; }
+        
+        aside *, aside.offline * { color: var(--footer-color); }
+        
+        aside.online * { color: #4caf50; }
         `;
 
         shadow.appendChild(css);
