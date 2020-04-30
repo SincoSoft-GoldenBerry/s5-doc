@@ -4,22 +4,22 @@ window['app'].define('components/s5.icons', [], () => {
     const dim = 40;
 
     const iconosEspeciales = {
-        BaseDatos: () => s5.iconos.BaseDatos(dim, true, color),
+        BaseDatos:  () => s5.iconos.BaseDatos(dim, true, color),
         Calendario: () => s5.iconos.Calendario(dim),
-        Clip: () => s5.iconos.Clip((dim*dim)/112.8, color),
-        Laptop: () => s5.iconos.Laptop(dim),
-        LogoSinco: () => s5.iconos.LogoSinco((dim*97)/155),
-        ConfigApp: () => s5.iconos.ConfigApp((dim*dim)/68.25, color),
-        IT: () => s5.iconos.IT(dim),
-        Modulo: () => s5.iconos.Modulo(dim, 'GB', { top: '#eb6e00', bottom: '#fb9500' }),
-        NetWork: () => s5.iconos.NetWork(dim, { circle: '#00a1f1', bar: color }),
-        SQLServer: () => s5.iconos.SQLServer(dim),
-        Security: () => s5.iconos.Security(dim),
-        Servidor: () => s5.iconos.Servidor(dim, true, color),
-        Shuffle: () => s5.iconos.Shuffle(dim, color, '#F90'),
-        SincoPlus: () => s5.iconos.SincoPlus(dim),
-        Windows: () => s5.iconos.Windows(dim),
-        YouTube: () => s5.iconos.YouTube(dim, '#ff0000')
+        Clip:       () => s5.iconos.Clip((dim*dim)/112.8, color),
+        Laptop:     () => s5.iconos.Laptop(dim),
+        LogoSinco:  () => s5.iconos.LogoSinco((dim*97)/155),
+        ConfigApp:  () => s5.iconos.ConfigApp((dim*dim)/68.25, color),
+        IT:         () => s5.iconos.IT(dim),
+        Modulo:     () => s5.iconos.Modulo(dim, 'GB', { top: '#eb6e00', bottom: '#fb9500' }),
+        NetWork:    () => s5.iconos.NetWork(dim, { circle: '#00a1f1', bar: color }),
+        SQLServer:  () => s5.iconos.SQLServer(dim),
+        Security:   () => s5.iconos.Security(dim),
+        Servidor:   () => s5.iconos.Servidor(dim, true, color),
+        Shuffle:    () => s5.iconos.Shuffle(dim, color, '#F90'),
+        SincoPlus:  () => s5.iconos.SincoPlus(dim),
+        Windows:    () => s5.iconos.Windows(dim),
+        YouTube:    () => s5.iconos.YouTube(dim, '#ff0000')
     };
 
     const iconos = Object.keys(s5.iconos).sort().map(icono => {
