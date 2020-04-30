@@ -11,9 +11,9 @@ window['app'].define('index', [], () => {
 
         nameContainer.insert([name1, name2]);
 
-        buttonsContainer.insert(s5.createElem('button').insert(document.createTextNode('GET')));
+        //buttonsContainer.insert(s5.createElem('button').insert(document.createTextNode('GET')));
 
-        logoContainer.insert(s5.createElem('img', { 'src': 'images/Logo_S5_square.png' }));
+        logoContainer.insert(s5.createElem('img', { 'src': 'images/Logo_S5_square.png', 'alt': 's5' }));
 
         nameButtonsContainer.insert([nameContainer, buttonsContainer]);
         //window['onLoadEnd']();
