@@ -8,19 +8,14 @@
 
     if ('serviceWorker' in navigator) {
         try {
-            const { v1, v2 } = window['app-version'];
-            const worker = await navigator.serviceWorker.register(`./sw.js?v1=${v1}&v2=${v2}`,);
+            const worker = await navigator.serviceWorker.register('./sw.js', { scope: './' });
 
             worker.addEventListener('updatefound', () => {
                 newWorker = worker.installing;
 
                 newWorker.addEventListener('statechange', () => {
-                    switch (newWorker.state) {
-                        case 'installed':
-                            if (navigator.serviceWorker.controller) {
-                                newVersion.classList.remove('hidden');
-                            }
-                            break;
+                    if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                        newVersion.classList.remove('hidden');
                     }
                 });
             });
