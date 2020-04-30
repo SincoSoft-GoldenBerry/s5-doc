@@ -49,7 +49,7 @@ class Network extends HTMLElement {
         
         aside.offline > .fa-slash { opacity: 1; }
         
-        aside *, aside.offline * { color: var(--footer-color); }
+        aside *, aside.offline * { color: #777777; }
         
         aside.online * { color: #4caf50; }
         `;
