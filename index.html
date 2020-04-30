@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es-CO">
 
 <head>
     <meta charset="utf-8" />
@@ -12,7 +12,7 @@
     try {
         eval('window["a"] = () => {};');
 
-        if (!/localhost|192/i.test(window.location.host)){
+        if (!/localhost|192|127/i.test(window.location.host)){
             if (window.location.protocol !== 'https:')
                 window.location.href = window.location.href.replace(window.location.protocol, 'https:');
         }
@@ -23,6 +23,7 @@
     </script>
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="manifest" href="manifest.json" />
+
     <!-- Soporte para iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#0a0a0a" class="meta-theme" />
@@ -30,6 +31,7 @@
     <meta name="apple-mobile-web-app-title" content="s5-js" />
     <link rel="apple-touch-icon" href="images/icons/icon-152x152.png" />
 
+    <!-- Estilos -->
     <link rel="stylesheet" href="css/variables/buttons.css" />
     <link rel="stylesheet" href="css/variables/light.css" id="theme" />
     <link rel="stylesheet" href="css/default.css" />
@@ -43,6 +45,7 @@
     <link rel="stylesheet" href="css/components/s5.autocomplete.css" />
     <link rel="stylesheet" href="css/fa/css/all.css" />
 
+    <!-- Javascript -->
     <script src="version.js"></script>
     <script src="js/cookies.js"></script>
 
@@ -52,13 +55,16 @@
     <script src="https://cdn.jsdelivr.net/npm/s5-js@1.0.49/s5.autocomplete.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/s5-js@1.0.49/s5.dragdrop.js"></script>
 
-    <script src="js/custom-components/s5-network.js"></script>
-    <script src="js/custom-components/s5-code.js"></script>
-    <script src="js/custom-components/s5-modal.js"></script>
+    <script async src="js/custom-components/s5-network.js"></script>
+    <script async src="js/custom-components/s5-code.js"></script>
+    <script async src="js/custom-components/s5-modal.js"></script>
+
+    <script async src="js/theme-chooser.js"></script>
+    <script async src="js/register.js"></script>
+    <script async src="js/init.js"></script>
 </head>
 
 <body>
-    <script src="js/theme-chooser.js"></script>
     <header>
         <section class="btn-menu-container">
             <button type="button" class="navbar-button">
@@ -132,10 +138,10 @@
         <div>SincoSoft S.A.S. - Goldenberry.</div>
         <div>Copyright &copy; <span class="year"></span>. Todos los derechos reservados</div>
     </footer>
+	
     <s5-network class="network"></s5-network>
     <s5-modal id="modal"></s5-modal>
-    <script src="js/register.js"></script>
-    <script src="js/init.js"></script>
+    
 </body>
 
 </html>
