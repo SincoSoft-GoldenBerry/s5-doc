@@ -163,7 +163,8 @@ class Modal extends HTMLElement {
     }
 
     _dragdrop() {
-        new s5.utilities.dragDrop(this.wrapper.querySelector('.modal'), this.wrapper, this.wrapper.querySelector('.modal-title'));
+        if (s5.utilities.dragDrop)
+            new s5.utilities.dragDrop(this.wrapper.querySelector('.modal'), this.wrapper, this.wrapper.querySelector('.modal-title'));
     }
 }
 
