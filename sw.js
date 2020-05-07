@@ -1,7 +1,9 @@
-self.importScripts('./version.js');
+self.importScripts(`./version.js?v=${new Date().getTime()}`);
 
-const staticCacheName = 's5-static-v0.0.2';
-const dynamicCacheName = 's5-dynamic-v0.0.2';
+const { v1, v2, app } = self['app-version'];
+
+const staticCacheName = `s5-static-v${app}`;
+const dynamicCacheName = `s5-dynamic-v${app}`;
 
 const limitCacheSize = (name, size) =>
     caches.open(name).then(cache =>
@@ -12,7 +14,7 @@ const limitCacheSize = (name, size) =>
         })
     );
 
-const assets = ({ v1, v2 }) => ([
+const assets = [
     './',
     './index.html',
     './offline.html',
@@ -37,32 +39,47 @@ const assets = ({ v1, v2 }) => ([
     `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.min.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.autocomplete.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.autocomplete.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.autocomplete.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.carousel.js`,
-    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.components.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.carousel.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.carousel.min.js.map`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.components.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.components.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.components.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.dragdrop.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.dragdrop.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.dragdrop.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.icons.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.icons.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.icons.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.indicator.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.indicator.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.indicator.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.notifications.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.notifications.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.notifications.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.progress.circular.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.progress.circular.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.progress.circular.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.request.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.request.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.request.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.switch.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.switch.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.switch.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.tour.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.tour.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.tour.min.js.map`,
 
     './css/components/s5.autocomplete.css',
     './css/components/s5.icons.css',
-    './css/fa/css/all.css',
     './css/fa/css/all.min.css',
-    './css/fa/css/brands.css',
     './css/fa/css/brands.min.css',
-    './css/fa/css/fontawesome.css',
     './css/fa/css/fontawesome.min.css',
-    './css/fa/css/regular.css',
     './css/fa/css/regular.min.css',
-    './css/fa/css/solid.css',
     './css/fa/css/solid.min.css',
-    './css/fa/css/svg-with-js.css',
     './css/fa/css/svg-with-js.min.css',
-    './css/fa/css/v4-shims.css',
     './css/fa/css/v4-shims.min.css',
 
     './css/fa/webfonts/fa-brands-400.eot',
@@ -121,15 +138,15 @@ const assets = ({ v1, v2 }) => ([
     './images/favicon.ico',
     './images/light-Logo_S5.png',
     './images/Logo_S5_square.png'
-]);
+];
 
 self.addEventListener('install', event =>
     event.waitUntil(
         caches
             .open(staticCacheName)
             .then(cache => 
-                cache.addAll(assets(self['app-version']))
-                /*assets(v1, v2).forEach(a => {
+                cache.addAll(assets)
+                /*assets.forEach(a => {
                     cache.add(a)
                         .catch(e => console.log(a));
                 })*/
@@ -150,7 +167,7 @@ self.addEventListener('activate', event =>
 );
 
 self.addEventListener('fetch', event => {
-    if (!/ping.json/i.test(event.request.url))
+    if (!/ping\.json/i.test(event.request.url))
         event.respondWith(
             caches
                 .match(event.request, { ignoreVary: true })
