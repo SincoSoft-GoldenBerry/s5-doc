@@ -12,7 +12,7 @@
             .replace(`#theme=${mode}`, '')
             .replace(`%23theme=${mode}`, '');
     }
-    
+    document.body.className = '';
     if (mode === 'light') {
         w['writeCookie']('view', 'light');
         document.body.classList.add('light');

@@ -19,7 +19,7 @@ class Network extends HTMLElement {
 
         const css = document.createElement('style');
         css.innerHTML = `
-        @import "css/fa/css/all.css";
+        @import "css/fa/css/all.min.css";
         
         @keyframes blinkingcolor{
             0%{		opacity: 1;	    }

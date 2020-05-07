@@ -13,7 +13,7 @@ window['app'].define('index', [], () => {
 
         //buttonsContainer.insert(s5.createElem('button').insert(document.createTextNode('GET')));
 
-        logoContainer.insert(s5.createElem('img', { 'src': 'images/Logo_S5_square.png', 'alt': 's5' }));
+        //logoContainer.insert(s5.createElem('img', { 'src': 'images/Logo_S5_square.png', 'alt': 's5' }));
 
         nameButtonsContainer.insert([nameContainer, buttonsContainer]);
         //window['onLoadEnd']();
