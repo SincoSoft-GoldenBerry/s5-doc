@@ -1,4 +1,4 @@
-#component-container {
+﻿#component-container {
     display: flex;
     flex-flow: column nowrap;
     padding: 0 30px;

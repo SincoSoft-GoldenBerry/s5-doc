@@ -1,8 +1,8 @@
-window['app'].define('who', [], () => {
+﻿window['app'].define('who', [], () => {
     return {
         init: function() {
             window['onLoadEnd']();
-            return s5.createElem('div');
+            return s5('<div>');
         }
     };
 });

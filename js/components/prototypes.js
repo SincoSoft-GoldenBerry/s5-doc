@@ -1,4 +1,4 @@
-window['app'].define('components/prototypes', [], () => {
+﻿window['app'].define('components/prototypes', [], () => {
 
     String.formata = String.prototype.formata = function () {
         var i = 0, l = 0;
@@ -23,7 +23,7 @@ window['app'].define('components/prototypes', [], () => {
             catch(e) {
                 code = e;
             }
-            return s5.createElem('div', { 'class': 'proto-container' }).insert([
+            return s5('<div>', { 'class': 'proto-container' }).insert([
                 document.createTextNode('"texto {0}".format("0")'),
                 document.createElement('br'),
                 document.createTextNode(code)

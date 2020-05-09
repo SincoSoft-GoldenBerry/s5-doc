@@ -1,4 +1,4 @@
-(w => {
+﻿(w => {
     w['readCookie'] = name => {
         name = name.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
     

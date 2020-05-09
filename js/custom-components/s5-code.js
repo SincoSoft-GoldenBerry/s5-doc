@@ -1,4 +1,4 @@
-class CodeViewer extends HTMLElement {
+﻿class CodeViewer extends HTMLElement {
 
     constructor() {
         super();

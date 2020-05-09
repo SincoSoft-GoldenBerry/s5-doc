@@ -1,11 +1,11 @@
-(w => {
-    const footer = s5.get('footer.bottom').shift();
-    const nav = s5.get('nav').cloneNode(true);
-    const sideBar = s5.get('.sidebar-menu').shift().insert(nav);
-    const container = s5.get('.content').shift();
-    const navLinks = s5.get('.nav-link');
+﻿(w => {
+    const footer = s5('footer.bottom').shift();
+    const nav = s5('nav').cloneNode(true);
+    const sideBar = s5('.sidebar-menu').shift().insert(nav);
+    const container = s5('.content').shift();
+    const navLinks = s5('.nav-link');
     const currentMode = document.body.className;
-    const modal = s5.get('modal');
+    const modal = s5('modal');
       
     const cargaInicial = () => {
         nav.removeAttribute('id');
@@ -13,14 +13,24 @@
 
         w['onLoadEnd'] = () => footer.classList.remove('bottom');
 
-        s5.get('.year').forEach(el => el.innerHTML = new Date().getFullYear());
-        s5.get('a[mode]').addEvent('click', e => {
+        s5('.year').forEach(el => el.innerHTML = new Date().getFullYear());
+
+        const asignarVersion = ({app}) => s5('.version').forEach(el => el.innerHTML = `versión: ${app}`);
+
+        if (!window['app-version']) {
+            s5.watch(window, 'app-version', () => asignarVersion(window['app-version']));
+        }
+        else {
+            asignarVersion(window['app-version']);
+        }
+        
+        s5('a[mode]').addEvent('click', e => {
             const mode = e.target.getAttribute('mode');
             w['writeCookie']('view', mode);
             w.location.reload();
         });
-        s5.get('.navbar-button').addEvent('click', () => sideBar.classList.toggle('visible'));
-        s5.get('.nav-link[mode]').forEach(t => {
+        s5('.navbar-button').addEvent('click', () => sideBar.classList.toggle('visible'));
+        s5('.nav-link[mode]').forEach(t => {
             if (t.attribute('mode') === currentMode) {
                 t.parentNode.classList.add('theme');
             }
@@ -28,14 +38,14 @@
                 t.parentNode.classList.remove('theme');
             }
         });
-        s5.get('.current-theme').forEach(themeIcon => {
+        s5('.current-theme').forEach(themeIcon => {
             themeIcon.className = '';
             themeIcon.className = `fa fa-${currentMode === 'dark' ? 'moon' : 'sun'}`;
 
             themeIcon.parentNode.setAttribute('title', `Tema actual: ${currentMode}`);
         });
 
-        s5.get('.img-logo > img').forEach(img => img.attribute('src', `images/${currentMode}-Logo_S5.png`));
+        s5('.img-logo > img').forEach(img => img.attribute('src', `images/${currentMode}-Logo_S5.png`));
     };
 
     const cargaModulos = () => {
@@ -47,12 +57,12 @@
                 container.innerHTML = '';
                 modal.close();
 
-                s5.get('.current').forEach(c => c.classList.remove('current'));
+                s5('.current').forEach(c => c.classList.remove('current'));
             };
 
             const stickyTitle = container => {
                 const selector = container.id ? `#${container.id}` : `.${container.className.split(' ').join('.')}`;
-                const elements = s5.get(`${selector} > [class*="title"], ${selector} > [id*="title"]`);
+                const elements = s5(`${selector} > [class*="title"], ${selector} > [id*="title"]`);
                 s5.map(elements, el => el.classList.add('sticky-title'));
                 if (elements.length > 0)
                     elements[0].nextSibling.classList.add('sticky-sibling');

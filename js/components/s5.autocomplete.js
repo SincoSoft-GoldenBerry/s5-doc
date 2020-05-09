@@ -1,6 +1,6 @@
-window['app'].define('components/s5.autocomplete', [], () => {
+﻿window['app'].define('components/s5.autocomplete', [], () => {
 
-    const modal = s5.get('modal');
+    const modal = s5('modal');
 
     let idDeMiInput = 'idDeMiInput';
 
@@ -34,7 +34,7 @@ window['app'].define('components/s5.autocomplete', [], () => {
         onresponse: undefined
     };
 
-    const container = s5.createElem('div', { 'class': 'autocompletes-container' });
+    const container = s5('<div>', { 'class': 'autocompletes-container' });
 
     container.innerHTML = `
         <section>
@@ -161,17 +161,15 @@ window['app'].define('components/s5.autocomplete', [], () => {
         </section>
     `;
     
-    const input = s5.createElem('input', { 'type': 'text', 'id': idDeMiInput });
-
-    container.insert(input);
+    s5('<input>', { 'type': 'text', 'id': idDeMiInput }).insertTo(container);
 
     const agregarEventos = () => {
-        const inputsText = s5.get('[type=text][data-prop]');
-        inputsText.addEvent('change', e => {
-            const input = e.target;
-            const { prop } = input.dataset;
-            config[prop] = input.value;
-        });
+        s5('[type=text][data-prop]')
+            .addEvent('change', e => {
+                const input = e.target;
+                const { prop } = input.dataset;
+                config[prop] = input.value;
+            });
     };
 
     const configurar = () => {

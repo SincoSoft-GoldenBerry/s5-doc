@@ -1,7 +1,7 @@
-window['app'].define('modal', [], () => {
+﻿window['app'].define('modal', [], () => {
 
     const close = () => {
-        const modal = s5.get('container-bg');
+        const modal = s5('container-bg');
         if (modal)
             modal.delete();
     };
@@ -10,18 +10,18 @@ window['app'].define('modal', [], () => {
         minwidth = minwidth || '40%';
         close();
 
-        const btnCerrar = s5.createElem('button', { 'type': 'button', 'class': 'btn success' })
-                            .insert(s5.createElem('i', { 'class': 'fa fa-times' }));
+        const btnCerrar = s5('<button>', { 'type': 'button', 'class': 'btn success' })
+                            .insert(s5('<i>', { 'class': 'fa fa-times' }));
     
-        const modal = s5.createElem('aside', { 'id': 'container-bg' })
+        const modal = s5('<aside>', { 'id': 'container-bg' })
                     .insert(
-                        s5.createElem('div', { 'id': 'dvModal', 'style': `min-width: ${minwidth};` })
+                        s5('<div>', { 'id': 'dvModal', 'style': `min-width: ${minwidth};` })
                             .insert([
-                                s5.createElem('div', { 'class': 'modal-title', 'id': 'titulo' }).insert([
+                                s5('<div>', { 'class': 'modal-title', 'id': 'titulo' }).insert([
                                     document.createTextNode(title),
                                     btnCerrar
                                 ]),
-                                s5.createElem('div', { 'class': 'modal-body' }).insert(content)
+                                s5('<div>', { 'class': 'modal-body' }).insert(content)
                             ])
                     );
 

@@ -1,4 +1,4 @@
-window['app'].define('code', [], () => {
+﻿window['app'].define('code', [], () => {
     const { v1, v2 } = window['app-version'];
     const urlBase = 'https://cdn.jsdelivr.net/npm/s5-js';
 
@@ -10,22 +10,21 @@ window['app'].define('code', [], () => {
             url = `${urlBase}@${v1}/${url}`;
         }
 
-        const menu = document.querySelector('.current > a');
-        document.title = `¡El código! - ${menu.textContent} - By: GoldenBerry`;
+        const { textContent: menu } = s5('.current > a').shift();
+        document.title = `¡El código! - ${menu} - By: GoldenBerry`;
 
-        const btnDescarga = s5.createElem('button', { 'type': 'button', 'class': 'descarga success', 'title': `Descargar ${menu.textContent}` })
-                                .insert(s5.createElem('i', { 'class': 'fas fa-download' }));
+        const btnDescarga = s5('<button>', { 'type': 'button', 'class': 'descarga success', 'title': `Descargar ${menu}` })
+                                .insert(s5('<i>', { 'class': 'fas fa-download' }))
+                                .addEvent('click', () => window.open(url, '_blank'));
 
-        btnDescarga.addEvent('click', () => window.open(url, '_blank'));
+        const codeContainer = s5('<div>', { 'id': 'code-container' });
 
-        const titulo = s5.createElem('section', { 'id': 'code-title' }).insert([
-            s5.createElem('h2').insert(document.createTextNode(`¡El código! - ${menu.textContent}`)),
+        s5('<section>', { 'id': 'code-title' }).insert([
+            s5('<h2>').insert(document.createTextNode(`¡El código! - ${menu}`)),
             btnDescarga
-        ]);
-
-        const codigo = s5.createElem('s5-code');
-
-        codigo.addEvent('codeshow', window['onLoadEnd']);
+        ]).insertTo(codeContainer);
+        
+        const codigo = s5('<s5-code>').addEvent('codeshow', window['onLoadEnd']).insertTo(codeContainer);
 
         s5.hr.get(url, { contentType: 'text' })
             .then(({ status, data }) => {
@@ -36,11 +35,6 @@ window['app'].define('code', [], () => {
             .catch(e => 
                 codigo.loadCode(`// No se puede cargar el recurso: ${url}\n// verifique los mensajes en consola\n// ${JSON.stringify(e)}`)
             );
-
-        const codeContainer = s5.createElem('div', { 'id': 'code-container' }).insert([
-            titulo,
-            codigo
-        ]);
 
         return codeContainer;
     };

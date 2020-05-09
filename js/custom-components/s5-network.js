@@ -1,4 +1,4 @@
-class Network extends HTMLElement {
+﻿class Network extends HTMLElement {
 
     get isonline() {
         return this._online;

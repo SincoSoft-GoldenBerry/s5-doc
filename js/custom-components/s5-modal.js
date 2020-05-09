@@ -1,4 +1,4 @@
-class Modal extends HTMLElement {
+﻿class Modal extends HTMLElement {
     get content() {
         return this._content;
     }

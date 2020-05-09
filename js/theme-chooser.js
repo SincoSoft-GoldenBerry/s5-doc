@@ -1,4 +1,4 @@
-(w => {
+﻿(w => {
     let mode = w['readCookie']('view') || 'light';
     const hashes = w.location.hash.split('#');
     const comparer = h => h.includes('theme');

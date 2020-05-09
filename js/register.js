@@ -1,10 +1,9 @@
-(async () => {
-
+﻿(async () => {
+return
     let newWorker;
 
-    const newVersion = s5.get('.new-version').shift();
-
-    newVersion.addEvent('click', () => newWorker.postMessage({ action: 'skipWaiting' }));
+    const newVersion = s5('.new-version').shift()
+                            .addEvent('click', () => newWorker.postMessage({ action: 'skipWaiting' }));
 
     if ('serviceWorker' in navigator) {
         try {
@@ -23,14 +22,14 @@
         catch (err) {
             console.log('El service worker no se instaló!', err);
         }
+
+        let refreshing;
+
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (refreshing) return;
+            window.location.reload();
+            refreshing = true;
+        });
     }
-
-    let refreshing;
-
-    navigator.serviceWorker.addEventListener('controllerchange', () => {
-        if (refreshing) return;
-        window.location.reload();
-        refreshing = true;
-    });
 
 })();

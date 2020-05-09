@@ -1,7 +1,8 @@
-window['app'].define('components/s5.icons', [], () => {
+﻿window['app'].define('components/s5.icons', [], () => {
     const color = document.body.classList.contains('dark') ? '#C7C7C7' : '#6D6D6D';
-    const modal = s5.get('modal');
+    const modal = s5('modal');
     const dim = 40;
+    const iconsContainer = s5('<div>', { 'class': 'icons-container' });
 
     const iconosEspeciales = {
         BaseDatos:  () => s5.iconos.BaseDatos(dim, true, color),
@@ -22,20 +23,11 @@ window['app'].define('components/s5.icons', [], () => {
         YouTube:    () => s5.iconos.YouTube(dim, '#ff0000')
     };
 
-    const iconos = Object.keys(s5.iconos).sort().map(icono => {
-        const contenedorIcono = s5.createElem('div', { 'class': 'icono' });
+    const fnIconos = () => Object.keys(s5.iconos).sort().forEach(icono => {
         let iconoSinco;
-        
-        if (!iconosEspeciales[icono])
-            iconoSinco = s5.iconos[icono](dim, color);
-        else 
-            iconoSinco = iconosEspeciales[icono]();
-
-        contenedorIcono.insert(iconoSinco);
-        contenedorIcono.icono = icono;
 
         const clickIcono = iconoClick => () => {
-            const contenidoModal = s5.createElem('div', { 'class': 'contenido-modal-icono' });
+            const contenidoModal = s5('<div>', { 'class': 'contenido-modal-icono' });
             const reg = new RegExp('\\(([^\\(\\)]*)\\)', 'i');
 
             let definicion = s5.iconos[iconoClick].toString();
@@ -43,15 +35,15 @@ window['app'].define('components/s5.icons', [], () => {
             const htmlDefinicion = reg.exec(definicion).shift()
                                         .replace(/\(|\)/g, '');
 
-            const codigo = s5.createElem('s5-code');
+            const codigo = s5('<s5-code>');
 
             codigo.loadCode(`/*Uso con s5.js v1 y v2*/\nSinco.iconos.${iconoClick}(${htmlDefinicion});\n\n/*Uso con s5.js v2*/\ns5.iconos.${iconoClick}(${htmlDefinicion});`);
 
             contenidoModal.insert([
-                s5.createElem('div').insert(
-                    s5.createElem('div', { 'class': 'icono hover' }).insert(iconoSinco.cloneNode(true))
+                s5('<div>').insert(
+                    s5('<div>', { 'class': 'icono hover' }).insert(iconoSinco.cloneNode(true))
                 ),
-                s5.createElem('span').insert(document.createTextNode('Código JS para su uso:')),
+                s5('<span>').insert(document.createTextNode('Código JS para su uso:')),
                 codigo
             ]);
 
@@ -62,12 +54,33 @@ window['app'].define('components/s5.icons', [], () => {
             modal.show();
         };
 
-        contenedorIcono.addEvent('click', clickIcono(icono));
+        const contenedorIcono = s5('<div>', { 'class': 'icono' })
+                                    .addEvent('click', clickIcono(icono))
+                                    .insertTo(iconsContainer);
+        
+        if (!iconosEspeciales[icono])
+            iconoSinco = s5.iconos[icono](dim, color);
+        else 
+            iconoSinco = iconosEspeciales[icono]();
 
-        return contenedorIcono;
+        contenedorIcono.insert(iconoSinco);
+        contenedorIcono.icono = icono;
     });
 
+    if ('iconos' in s5) {
+        fnIconos();
+    }
+    else{
+        let inte;
+        inte = setInterval(() => {
+            if ('iconos' in s5) {
+                clearInterval(inte);
+                fnIconos();
+            }
+        }, 10);
+    }
+
     return {
-        get: () => s5.createElem('div', { 'class': 'icons-container' }).insert(iconos)
+        get: () => iconsContainer
     };
 });
