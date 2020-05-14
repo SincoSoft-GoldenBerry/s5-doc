@@ -1,11 +1,12 @@
 ﻿(async () => {
 return
-    let newWorker;
-
-    const newVersion = s5('.new-version').shift()
-                            .addEvent('click', () => newWorker.postMessage({ action: 'skipWaiting' }));
 
     if ('serviceWorker' in navigator) {
+        let newWorker;
+    
+        const newVersion = s5('.new-version').shift()
+                                .addEvent('click', () => newWorker.postMessage({ action: 'skipWaiting' }));
+
         try {
             const worker = await navigator.serviceWorker.register('./sw.js', { scope: './' });
 
