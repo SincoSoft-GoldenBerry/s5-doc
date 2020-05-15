@@ -69,6 +69,16 @@ button {
     text-shadow: 0 -1px 0 rgba(0,0,0,.2);
 }
 
+button:disabled,
+button:disabled:hover {
+    background-image: none !important;
+    background-color: grey !important;
+    cursor: not-allowed;
+    filter: none !important;
+    box-shadow: none !important;
+    border-color: grey !important;
+}
+
     button:hover,
     button:focus {
         background-color: #563d7c;

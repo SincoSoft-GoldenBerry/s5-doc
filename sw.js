@@ -1,7 +1,7 @@
 ﻿self.importScripts('./version.js');
 
 const { v1, v2 } = self['app-version'];
-const app = '0.1.5'; //Toca cambiar a mano para refrescar versión. El importScripts se cachea solo y no deja cargarlo con ?v=
+const app = '0.1.8'; //Toca cambiar a mano para refrescar versión. El importScripts se cachea solo y no deja cargarlo con ?v=
 
 const staticCacheName = `s5-static-v${app}`;
 const dynamicCacheName = `s5-dynamic-v${app}`;
@@ -25,6 +25,7 @@ const assets = [
     './js/components/prototypes.js',
     './js/components/s5.autocomplete.js',
     './js/components/s5.icons.js',
+    './js/custom-components/s5-version.js',
     './js/custom-components/s5-modal.js',
     './js/custom-components/s5-network.js',
     './js/custom-components/s5-code.js',
@@ -36,6 +37,7 @@ const assets = [
     './js/register.js',
     './js/theme-chooser.js',
     './js/who.js',
+    'https://data.jsdelivr.com/v1/package/npm/s5-js',
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.min.js`,
@@ -136,7 +138,6 @@ const assets = [
     './images/icons/icon-192x192.png',
     './images/icons/icon-384x384.png',
     './images/icons/icon-512x512.png',
-    './images/arrow-point-to-right.png',
     './images/dark-Logo_S5.png',
     './images/favicon.ico',
     './images/light-Logo_S5.png',

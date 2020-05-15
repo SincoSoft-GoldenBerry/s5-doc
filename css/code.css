@@ -15,9 +15,20 @@
     align-content: center;
 }
 
-    #code-title h2 {
-        margin: 0;
-    }
+#code-title h2 {
+    margin: 0;
+}
+
+.div-descarga {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+}
+
+.div-descarga > * {
+    margin-left: 10px;
+    margin-top: 10px;
+}
 
 @media (max-width: 700px) {
     #code-container {

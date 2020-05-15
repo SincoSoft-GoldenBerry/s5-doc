@@ -2,26 +2,46 @@
     const { v1, v2 } = window['app-version'];
     const urlBase = 'https://cdn.jsdelivr.net/npm/s5-js';
 
-    const crearDiseno = url => {
+    const getUrl = url => (v = null) => {
+        const ret = {
+            url: '',
+            show: 'v1'
+        };
         if (/v2/i.test(url)){
-            url = `${urlBase}@${v2}/${url.split('v2/').join('')}`;
+            ret.url = `${urlBase}@${v || v2}/${url.split('v2/').join('')}`;
+            ret.show = 'v2';
         }
         else {
-            url = `${urlBase}@${v1}/${url}`;
+            ret.url = `${urlBase}@${v || v1}/${url}`;
         }
+        return ret;
+    };
+
+    const crearDiseno = _url => {
+        const fnUrl = getUrl(_url);
+        const { url, show } = fnUrl();
 
         const { textContent: menu } = s5('.current > a').shift();
         document.title = `¡El código! - ${menu} - By: GoldenBerry`;
 
-        const btnDescarga = s5('<button>', { 'type': 'button', 'class': 'descarga success', 'title': `Descargar ${menu}` })
+        const btnDescarga = s5('<button>', { 'type': 'button', 'class': 'descarga success', 'disabled': 'disabled', 'title': `Descargar ${menu}` })
                                 .insert(s5('<i>', { 'class': 'fas fa-download' }))
-                                .addEvent('click', () => window.open(url, '_blank'));
+                                .addEvent('click', () => {
+                                    const { selected } = versiones;
+                                    const { url: urlDownload } = fnUrl(selected);
+                                    window.open(urlDownload, '_blank');
+                                });
 
-        const codeContainer = s5('<div>', { 'id': 'code-container' });
+        const versiones = s5('<s5-version>', { 'title': 'Versión para descargar', 'current-v1': v1, 'current-v2': v2, 'show': show, 'mode': document.body.className });
+
+        const codeContainer = s5('<div>', { 'id': 'code-container' }).addEvent('versionslist', () => btnDescarga.removeAttribute('disabled'));
 
         s5('<section>', { 'id': 'code-title' }).insert([
             s5('<h2>').insert(document.createTextNode(`¡El código! - ${menu}`)),
-            btnDescarga
+            s5('<div>', { 'class': 'div-descarga' }).insert([
+                versiones,
+                btnDescarga
+            ])
         ]).insertTo(codeContainer);
         
         const codigo = s5('<s5-code>').addEvent('codeshow', window['onLoadEnd']).insertTo(codeContainer);
