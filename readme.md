@@ -6,5 +6,6 @@ Se realizó con el fin de lograr una PWA de documentación para poder acceder a 
 
 Para ver las publicaciones de estas fuentes, diríjase a: [sincoerp.com/s5/v2](https://sincoerp.com/s5/v2/).
 
-**By: *GoldenBerry* 
-[SincoSoft S.A.S.](https://www.sinco.com.co)**
+**By: *GoldenBerry***
+
+**[SincoSoft S.A.S.](https://www.sinco.com.co)**
