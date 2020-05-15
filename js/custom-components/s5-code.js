@@ -99,6 +99,8 @@
             display: flex;
             border-radius: 5px;
             background-color: #1e1e1e;
+            font-size: 16px !important;
+            -webkit-text-size-adjust: none;
         }
         
         .lines {

@@ -29,6 +29,7 @@ body {
     box-sizing: border-box;
     color: var(--body-color);
     outline: none;
+    -webkit-text-size-adjust: none;
 
     transition: 0.2s ease all;
 }

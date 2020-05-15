@@ -72,7 +72,8 @@
     right: 0;
 }
 
-#nav .nav-dropdown-container:hover .nav-dropdown {
+#nav .nav-dropdown-container:hover .nav-dropdown,
+#nav .nav-dropdown-container:focus .nav-dropdown {
     display: block;
 }
 
@@ -98,13 +99,20 @@ a {
 }
 
 #nav li:hover,
+#nav li:focus,
 #nav li:hover > a,
+#nav li:focus > a,
+#nav li:hover > a ~ *,
+#nav li:focus > a ~ *,
 #nav li:hover > a > *,
-#nav li:hover:before {
+#nav li:focus > a > *,
+#nav li:hover:before,
+#nav li:focus:before {
     color: #4283b9;
 }
 
-#nav li:hover > span {
+#nav li:hover > span,
+#nav li:focus > span {
     border-top: 5px solid #4283b9;
 }
 
@@ -115,9 +123,21 @@ a {
 
 .current,
 .current > a,
+.current > a ~ *,
 .theme,
 .theme > a {
     color: #4283b9 !important;
+}
+
+.sidebar-menu-bg {
+    position: fixed;
+    top: 49px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: none;
 }
 
 .sidebar-menu {
@@ -129,7 +149,21 @@ a {
     overflow-x: hidden;
     overflow-y: auto;
     z-index: 11;
+    font-size: .8em;
     box-shadow: var(--menu-sidebar-menu-boxshadow);
+    padding-bottom: 10px;
+}
+
+.sidebar-menu li {
+    position: relative;
+}
+
+.sidebar-menu li:not(.nav-dropdown-container) {
+    height: 25px;
+}
+
+.sidebar-menu .nav-dropdown-container ul {
+    margin-right: 0;
 }
 
 .sidebar-menu i,
@@ -161,7 +195,8 @@ header i ~ span {
 }
 
 .navbar-button:focus,
-.navbar-button:hover {
+.navbar-button:hover,
+.navbar-button:focus {
     background-color: var(--menu-navbar-button-hover-bgcolor);
     border-color: var(--menu-navbar-button-hover-border-color);
 }
@@ -203,27 +238,27 @@ li:before {
 
 li.code:before {
     content: "\f121";
-    margin-right: 10px;
+    width: 30px;
 }
 
 li.icons:before {
     content: "\f86d";
-    margin-right: 10px;
+    width: 30px;
 }
 
 li.complete:before {
     content: "\f022";
-    margin-right: 10px;
+    width: 30px;
 }
 
 li.light:before {
     content: "\f185";
-    margin-right: 10px;
+    width: 30px;
 }
 
 li.dark:before {
     content: "\f186";
-    margin-right: 10px;
+    width: 30px;
     font-size: .9em;
 }
 
@@ -231,8 +266,43 @@ li.js:before {
     font-family: 'Font Awesome 5 Brands';
     font-weight: 400;
     content: '\f3b9';
-    margin-right: 10px;
+    width: 30px;
     font-size: 1.1em;
+}
+
+li.drag:before {
+    content: "\f31e";
+    width: 30px;
+}
+
+li.tour:before {
+    content: "\f4d7";
+    width: 30px;
+}
+
+li.prog:before {
+    font-family: 'Font Awesome 5 Brands';
+    font-weight: 400;
+    content: "\f284";
+    width: 30px;
+    font-size: 1.1em;
+}
+
+li.switch:before {
+    content: "\f205";
+    width: 30px;
+}
+
+li.noti:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 400;
+    content: "\f27a";
+    width: 30px;
+}
+
+li.request:before {
+    content: "\f1fa";
+    width: 30px;
 }
 
 @media (max-width: 700px) {
@@ -258,6 +328,9 @@ li.js:before {
     }
     .sidebar-menu.visible {
         left: 0;
+    }
+    .sidebar-menu-bg.visible {
+        display: inherit;
     }
     .img-logo {
         padding: 0 20px;

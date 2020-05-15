@@ -26,7 +26,7 @@ div.icono {
 }
 
 div.icono:hover,
-div.icono.hover {
+div.icono:focus {
     border-color: var(--icon-border-color);
     -webkit-box-shadow: var(--icon-boxshadow);
     box-shadow:         var(--icon-boxshadow);
