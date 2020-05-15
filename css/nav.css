@@ -23,6 +23,17 @@
     color: #777;
 }
 
+
+
+li > aside.v1,
+li > aside.v2 {
+    font-size: .7em;
+    color: var(--menu-aside-color);
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
 #nav li {
     display: inline-block;
     position: relative;
@@ -83,6 +94,10 @@
     padding: 0;
     display: flex;
     align-items: center;
+}
+
+.nav-dropdown.codigo li {
+    padding-right: 45px !important;
 }
 
 #nav .nav-dropdown a {
