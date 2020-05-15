@@ -33,4 +33,11 @@
     --input-text-bgcolor: #dcdcdc;
     --input-text-border-color: #cacaca;
     --input-text-border-color-focus: #a0a0a0;
+
+    --scrollbar-track-bgcolor: inherit;
+    --scrollbar-track-hover-bgcolor: rgba(0, 0, 0, .05);
+    --scrollbar-track-hover-shadow-color: rgba(0, 0, 0, .1);
+    --scrollbar-track-active-bgcolor: rgba(0, 0, 0, .05);
+    --scrollbar-track-active-shadow: inset 1px 0 0 rgba(0, 0, 0, .14), inset -1px 0 0 rgba(0, 0, 0, .07);
+    --scrollbar-track-horizontal-active-shadow: inset 0 1px 0 rgba(0, 0, 0, .14), inset 0 -1px 0 rgba(0, 0, 0, .07);
 }
