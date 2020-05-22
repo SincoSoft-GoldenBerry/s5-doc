@@ -35,6 +35,8 @@ const assets = [
     './js/index.js',
     './js/init.js',
     './js/register.js',
+    './js/version-loader.js',
+    './js/database.js',
     './js/theme-chooser.js',
     './js/who.js',
     'https://data.jsdelivr.com/v1/package/npm/s5-js',
@@ -178,17 +180,24 @@ self.addEventListener('fetch', event => {
                 .then(cacheRes =>
                     cacheRes ||
                     fetch(event.request)
-                        .then(fetchRes =>
-                            caches.open(dynamicCacheName)
-                                .then(cache => {
+                        .then(fetchRes => {
+                            if (event.request.url.indexOf('/v1/package/npm/s5-js@') > 1) {
+                                caches.open(staticCacheName).then(cache => {
                                     cache.put(event.request.url, fetchRes.clone());
-                                    limitCacheSize(dynamicCacheName, 15);
                                     return fetchRes;
-                                })
-                        )
+                                });
+                            }
+                            else {
+                                caches.open(dynamicCacheName).then(cache => {
+                                    cache.put(event.request.url, fetchRes.clone());
+                                    limitCacheSize(dynamicCacheName, 50);
+                                    return fetchRes;
+                                });
+                            }
+                        })
                 )
                 .catch(event => {
-                    if (event.request.url.indexOf('.html') > -1) {
+                    if (event.request && event.request.url.indexOf('.html') > -1) {
                         return caches.match('./offline.html');
                     }
                 })
