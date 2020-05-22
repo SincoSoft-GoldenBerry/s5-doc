@@ -6,7 +6,7 @@
         const sideBar = s5('.sidebar-menu').shift().insert(nav);
         const sideBarBg = s5('.sidebar-menu-bg').shift();
         const container = s5('.content').shift();
-        const navLinks = s5('.nav-link');
+        const navLinks = s5('li[href]');
         const currentMode = document.body.className;
         const modal = s5('modal');
 
@@ -59,6 +59,8 @@
             });
 
             s5('.img-logo > img').forEach(img => img.attribute('src', `images/${currentMode}-Logo_S5.png`));
+
+            navLinks.addEvent('click', function() { window.location.href = this.attribute('href'); });
         };
 
         const cargaModulos = () => {
@@ -86,7 +88,7 @@
 
                     let option = w.location.hash || '#index';
                     navLinks.filter(n => n.attribute('href') === option)
-                        .forEach(el => el.parentNode.classList.add('current'));
+                        .forEach(el => el.classList.add('current'));
                     option = option.split('-');
 
                     const nombreModulo = option.shift().replace('#', '');
