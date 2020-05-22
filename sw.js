@@ -1,7 +1,7 @@
 ﻿self.importScripts('./version.js');
 
 const { v1, v2 } = self['app-version'];
-const app = '0.1.8'; //Toca cambiar a mano para refrescar versión. El importScripts se cachea solo y no deja cargarlo con ?v=
+const app = '0.1.7'; //Toca cambiar a mano para refrescar versión. El importScripts se cachea solo y no deja cargarlo con ?v=
 
 const staticCacheName = `s5-static-v${app}`;
 const dynamicCacheName = `s5-dynamic-v${app}`;
