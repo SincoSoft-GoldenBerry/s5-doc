@@ -10,12 +10,14 @@
         this._defineShadow();
     }
 
-    static get observedAttributes() { return ['current-v1', 'current-v2', 'show', 'mode']; }
+    static get observedAttributes() { return ['show', 'mode', 'file']; }
 
     attributeChangedCallback(attr, oldValue, newValue) {
         this[attr] = newValue;
         if (attr === 'mode')
             this.wrapper.classList.add(newValue);
+        if (attr === 'file')
+            this[attr] = newValue.split(' ').shift();
     }
 
     _defineShadow() {
@@ -81,20 +83,23 @@
 
     async _listVersions() {
         try {
-            const { status, data } = await s5.hr.get('https://data.jsdelivr.com/v1/package/npm/s5-js', { contentType: 'text' });
-            if (status === 200) {
-                let { versions } = JSON.parse(data);
-                versions = versions.reduce((ac, v) => {
-                    if (v.startsWith('1')){
-                        ac['v1'].push(v);
-                    }
-                    else {
-                        ac['v2'].push(v);
-                    }
-                    return ac;
-                }, { 'v1': [], 'v2': [] });
-                this._showResults(versions[this.show]);
-            }
+            const db = await new s5Database().open();
+
+            const versions = await db.getAll('s5-versions');
+            
+            const r = t => t.replace(/[^\d]/g, '');
+            const f = r(this.show);
+
+            this._showResults(
+                versions
+                    .filter(({ version, files }) => version.startsWith(f) && files.includes(this.file))
+                    .map(({ version }) => version)
+                    .sort((a, b) => {
+                        a = parseInt(r(a.split('-').shift()));
+                        b = parseInt(r(b.split('-').shift()));
+                        return b-a;
+                    })
+            );
         }
         catch (e) {
             console.log('Error al consultar las versiones:', e);

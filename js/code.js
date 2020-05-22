@@ -32,7 +32,7 @@
                                     window.open(urlDownload, '_blank');
                                 });
 
-        const versiones = s5('<s5-version>', { 'title': 'Versión para descargar', 'current-v1': v1, 'current-v2': v2, 'show': show, 'mode': document.body.className });
+        const versiones = s5('<s5-version>', { 'title': 'Versión para descargar', 'file': menu, 'show': show, 'mode': document.body.className });
 
         const codeContainer = s5('<div>', { 'id': 'code-container' }).addEvent('versionslist', () => btnDescarga.removeAttribute('disabled'));
 
