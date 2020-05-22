@@ -196,7 +196,7 @@ button > * {
     .sticky-title {
         left: 0;
         right: 0;
-        padding: 20px 30px !important;
+        padding: 20px !important;
         font-size: .8em;
     }
 }

@@ -17,6 +17,7 @@
 
 #code-title h2 {
     margin: 0;
+    flex: 1;
 }
 
 .div-descarga {
@@ -36,5 +37,9 @@
     }
     #code-title {
         padding: 20px 30px;
+    }
+    .div-descarga > * {
+        margin-left: 5px;
+        margin-top: 2px;
     }
 }

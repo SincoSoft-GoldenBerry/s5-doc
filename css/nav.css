@@ -103,6 +103,7 @@ li > aside.v2 {
 #nav .nav-dropdown a {
     display: block;
     padding: 0;
+    flex: 1;
 }
 
 li {
@@ -317,6 +318,16 @@ li.noti:before {
 
 li.request:before {
     content: "\f1fa";
+    width: 30px;
+}
+
+li.next:before {
+    content: "\f079";
+    width: 30px;
+}
+
+li.other:before {
+    content: "\f067";
     width: 30px;
 }
 
