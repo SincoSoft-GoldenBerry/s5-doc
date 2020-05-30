@@ -29,10 +29,6 @@
     justify-content: center;
 }
 
-.index-nb-container>section {
-    flex: 1 50%;
-}
-
 .index-name-container {
     display: flex;
     flex-flow: column;
