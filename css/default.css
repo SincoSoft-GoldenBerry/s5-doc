@@ -18,6 +18,15 @@
          url('fonts/roboto-light-webfont.svg#robotolight') format('svg');
 }
 
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 body {
     margin: 0;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
@@ -30,7 +39,6 @@ body {
     color: var(--body-color);
     outline: none;
     -webkit-text-size-adjust: none;
-
     transition: 0.2s ease all;
 }
 
@@ -66,7 +74,7 @@ button {
     border: 1px solid transparent;
     border-radius: 4px;
     background-repeat: repeat-x;
-    text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
 }
 
 button:disabled,
@@ -104,10 +112,8 @@ button.success {
     background-image: var(--button-success-bgimage-linear-gradient);
     filter: var(--button-success-filter-a);
     filter: var(--button-success-filter-b);
-    
     -webkit-box-shadow: var(--button-success-boxshadow);
     box-shadow: var(--button-success-boxshadow);
-
     color: var(--button-success-color);
     background-color: var(--button-success-bgcolor);
     border-color: var(--button-success-border-color);
@@ -126,7 +132,6 @@ button > * {
     button.success:active {
         background-color: var(--button-success-bgcolor-hover);
         border-color: var(--button-success-border-color-active);
-
         -webkit-box-shadow: var(--button-success-boxshadow-active);
         box-shadow: var(--button-success-boxshadow-active);
     }
@@ -185,6 +190,10 @@ button > * {
 
 .sticky-sibling {
     margin-top: calc(var(--header-height) * 1.75);
+}
+
+.rotate-infinite {
+    animation: rotating 1s linear infinite;
 }
 
 @media (max-width: 700px) {

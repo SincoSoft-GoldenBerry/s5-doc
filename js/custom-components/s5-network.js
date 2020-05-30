@@ -81,6 +81,9 @@
         };
 
         if (navigator.onLine) {
+
+            await window.waitForGlobal('s5.hr');
+
             try {
                 await s5.hr.get('ping.json');
                 this.wrapper.classList.add('online');

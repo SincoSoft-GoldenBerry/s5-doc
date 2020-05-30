@@ -1,7 +1,7 @@
 ﻿self.importScripts('./version.js');
 
 const { v1, v2 } = self['app-version'];
-const app = '0.1.7'; //Toca cambiar a mano para refrescar versión. El importScripts se cachea solo y no deja cargarlo con ?v=
+const app = '0.1.8'; //Toca cambiar a mano para refrescar versión. El importScripts se cachea solo y no deja cargarlo con ?v=
 
 const staticCacheName = `s5-static-v${app}`;
 const dynamicCacheName = `s5-dynamic-v${app}`;
@@ -36,7 +36,8 @@ const assets = [
     './js/init.js',
     './js/register.js',
     './js/version-loader.js',
-    './js/database.js',
+    './js/model/database.js',
+    './js/model/version-model.js',
     './js/theme-chooser.js',
     './js/who.js',
     'https://data.jsdelivr.com/v1/package/npm/s5-js',
@@ -47,6 +48,9 @@ const assets = [
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.autocomplete.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.autocomplete.min.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.autocomplete.min.js.map`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.autocomplete.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.autocomplete.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.autocomplete.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.carousel.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.carousel.min.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.carousel.min.js.map`,
@@ -56,9 +60,15 @@ const assets = [
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.dragdrop.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.dragdrop.min.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.dragdrop.min.js.map`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.dragdrop.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.dragdrop.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.dragdrop.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.icons.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.icons.min.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.icons.min.js.map`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.icons.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.icons.min.js`,
+    `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.icons.min.js.map`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.indicator.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.indicator.min.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.indicator.min.js.map`,
@@ -182,18 +192,16 @@ self.addEventListener('fetch', event => {
                     fetch(event.request)
                         .then(fetchRes => {
                             if (event.request.url.indexOf('/v1/package/npm/s5-js@') > 1) {
-                                caches.open(staticCacheName).then(cache => {
+                                return caches.open(staticCacheName).then(cache => {
                                     cache.put(event.request.url, fetchRes.clone());
                                     return fetchRes;
                                 });
                             }
-                            else {
-                                caches.open(dynamicCacheName).then(cache => {
-                                    cache.put(event.request.url, fetchRes.clone());
-                                    limitCacheSize(dynamicCacheName, 50);
-                                    return fetchRes;
-                                });
-                            }
+                            return caches.open(dynamicCacheName).then(cache => {
+                                cache.put(event.request.url, fetchRes.clone());
+                                limitCacheSize(dynamicCacheName, 50);
+                                return fetchRes;
+                            });
                         })
                 )
                 .catch(event => {

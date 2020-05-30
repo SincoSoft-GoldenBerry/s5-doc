@@ -75,17 +75,20 @@
         this._render();
     }
 
-    _render() {
-        this.wrapper.innerHTML = '';
+    async _render() {
+        this.wrapper.innerHTML = '<option value="-1">Cargando...</option>';
+
+        await window.waitForGlobal('versions-loaded');
 
         this._listVersions();
     }
 
     async _listVersions() {
         try {
-            const db = await new s5Database().open();
+            const versionModel = new VersionModel();
+            const versions = await versionModel.getAllVersions();
 
-            const versions = await db.getAll('s5-versions');
+            this.wrapper.innerHTML = '';
             
             const r = t => t.replace(/[^\d]/g, '');
             const f = r(this.show);
@@ -102,6 +105,7 @@
             );
         }
         catch (e) {
+            this.wrapper.innerHTML = '';
             console.log('Error al consultar las versiones:', e);
             s5('<option>', { 'value': '-1' }).insert(document.createTextNode('--')).insertTo(this.wrapper);
         }

@@ -1,6 +1,8 @@
 ﻿(w => {
     const fnStart = () => {
 
+        document.addEventListener('touchstart', () => { }, { passive: true });
+
         const footer = s5('footer.bottom').shift();
         const nav = s5('nav').cloneNode(true);
         const sideBar = s5('.sidebar-menu').shift().insert(nav);
@@ -65,7 +67,7 @@
 
         const cargaModulos = () => {
             const modules = ['index', 'components', 'who', 'code'];
-            w['app'] = s5.initialize(null, null, 'js');
+            w['app'] = s5.initialize(['request.min', 'icons.min', 'autocomplete.min', 'dragdrop.min'], null, 'js');
             w['app'].require([...modules], (...loadedModules) => {
 
                 const limpiar = () => {
@@ -113,10 +115,5 @@
         cargaModulos();
     };
 
-    if (document.body.loaded) {
-        fnStart();
-    }
-    else {
-        s5.watch(document.body, 'loaded', fnStart);
-    }
+    window.waitForGlobal('s5').then(() => window.waitForGlobal('document.body.loaded').then(fnStart));
 })(window);

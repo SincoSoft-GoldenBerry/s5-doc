@@ -11,15 +11,39 @@
     <script>
 
     try {
-        eval('window["a"] = () => {};');
+        eval('() => {};');
 
-        if (!/localhost|192|127/i.test(window.location.host)){
+        window['localhost'] = /localhost|192|127/i.test(window.location.host);
+
+        if (!window['localhost']){
             if (window.location.protocol !== 'https:')
                 window.location.href = window.location.href.replace(window.location.protocol, 'https:');
         }
     } catch (e) {
         window.location.href = 'unsupported.html';
     }
+
+    (() => {
+        const checkNested = (obj, args) => {
+            for (let i = 0; i < args.length; i++) {
+                const p = args[i];
+                if (!obj || obj[p] === undefined) {
+                    return false;
+                }
+                obj = obj[p];
+            }
+            return true;
+        };
+        const caller = key => (resolve, reject) => {
+            if (checkNested(window, key.split('.'))) {
+                resolve();
+            }
+            else {
+                setTimeout(() => caller(key)(resolve, reject), 100);
+            }
+        };
+        window.waitForGlobal = key => new Promise(caller(key));
+    })();
 
     </script>
     <link rel="shortcut icon" href="images/favicon.ico" />
@@ -47,18 +71,18 @@
     <link media="all" rel="preload" href="css/components/s5.autocomplete.css" as="style" onload="this.rel='stylesheet'" />
     <link media="all" rel="preload" href="css/fa/css/all.min.css" as="style" onload="this.rel='stylesheet'" />
 
+    <link rel="dns-prefetch" href="https://data.jsdelivr.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+
     <!-- Javascript -->
-    <script async src="js/database.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/s5-js@2.0.26/s5.min.js"></script>
+
+    <script async src="js/model/database.js"></script>
+    <script async src="js/model/version-model.js"></script>
     <script async src="js/version-loader.js"></script>
     <script async src="js/cookies.js"></script>
     <script async src="version.js"></script>
     <script async src="js/theme-chooser.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/s5-js@2.0.24/s5.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/s5-js@2.0.24/s5.request.min.js"></script>
-    <script async src="https://cdn.jsdelivr.net/npm/s5-js@1.0.55/s5.icons.min.js"></script>
-    <script async src="https://cdn.jsdelivr.net/npm/s5-js@1.0.55/s5.autocomplete.min.js"></script>
-    <script async src="https://cdn.jsdelivr.net/npm/s5-js@1.0.55/s5.dragdrop.min.js"></script>
 
     <script async src="js/custom-components/s5-version.js"></script>
     <script async src="js/custom-components/s5-network.js"></script>
@@ -69,7 +93,7 @@
     <script async src="js/init.js"></script>
 </head>
 
-<body class="light" ontouchstart>
+<body class="light">
     <header>
         <section class="btn-menu-container">
             <button type="button" class="navbar-button">

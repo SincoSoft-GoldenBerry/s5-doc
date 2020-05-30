@@ -126,7 +126,7 @@
         this.wrapper.innerHTML = '';
     }
 
-    _render() {
+    async _render() {
         this.wrapper.innerHTML = `
             <div style="min-width: ${this.minWidth}%; position: absolute;" class="modal">
                 <div class="modal-title">
@@ -140,6 +140,7 @@
         `;
 
         this._appendEvents();
+        await window.waitForGlobal('s5.utilities.dragDrop')
         this._dragdrop();
     }
 
@@ -164,8 +165,7 @@
     }
 
     _dragdrop() {
-        if (s5.utilities.dragDrop)
-            new s5.utilities.dragDrop(this.wrapper.querySelector('.modal'), this.wrapper, this.wrapper.querySelector('.modal-title'));
+        new s5.utilities.dragDrop(this.wrapper.querySelector('.modal'), this.wrapper, this.wrapper.querySelector('.modal-title'));
     }
 }
 

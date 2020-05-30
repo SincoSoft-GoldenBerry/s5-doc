@@ -1,5 +1,5 @@
-﻿(async () => {
-return
+﻿window.waitForGlobal('s5').then(async () => {
+    if (window['localhost']) return;
 
     if ('serviceWorker' in navigator) {
         let newWorker;
@@ -33,4 +33,4 @@ return
         });
     }
 
-})();
+});

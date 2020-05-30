@@ -20,7 +20,7 @@
 
 #nav *,
 .main-menu * {
-    color: #777;
+    color: var(--menu-nav-color);
 }
 
 
@@ -134,7 +134,7 @@ a {
 
 .current,
 .theme {
-    border-bottom: 2px solid #4283b9 !important;
+    border-bottom: 2px solid var(--menu-current) !important;
 }
 
 .current,
@@ -142,7 +142,7 @@ a {
 .current > a ~ *,
 .theme,
 .theme > a {
-    color: #4283b9 !important;
+    color: var(--menu-current) !important;
 }
 
 .sidebar-menu-bg {

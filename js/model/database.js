@@ -1,4 +1,4 @@
-﻿class s5Database {
+﻿class Database {
     constructor() {
         const name = 's5-resources';
         const version = 1;
