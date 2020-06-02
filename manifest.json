@@ -4,9 +4,9 @@
     "description": "Documentación de la librería s5.js",
     "start_url": "./",
     "display": "standalone",
-    "background_color": "#1E1E1E",
-    "theme_color": "#0a0a0a",
-    "title_bar_color": "#0a0a0a",
+    "background_color": "#21629d",
+    "theme_color": "#21629d",
+    "title_bar_color": "#21629d",
     "orientation": "portrait-primary",
     "icons": [
         {

@@ -1,10 +1,12 @@
 ﻿self.importScripts('./version.js');
 
 const { v1, v2 } = self['app-version'];
-const app = '0.1.8'; //Toca cambiar a mano para refrescar versión. El importScripts se cachea solo y no deja cargarlo con ?v=
+const app = '0.1.9'; //Toca cambiar a mano para refrescar versión. El importScripts se cachea solo y no deja cargarlo con ?v=
 
 const staticCacheName = `s5-static-v${app}`;
 const dynamicCacheName = `s5-dynamic-v${app}`;
+
+const iOS = navigator.platform && /iPad|iPhone|iPod|MacIntel/i.test(navigator.platform);
 
 const limitCacheSize = (name, size) =>
     caches.open(name).then(cache =>
@@ -14,6 +16,33 @@ const limitCacheSize = (name, size) =>
             }
         })
     );
+
+let iOsIcons = [];
+
+if (iOS) {
+    iOsIcons = [
+        './images/splash/icon_1136x640.png',
+        './images/splash/icon_2436x1125.png',
+        './images/splash/icon_1792x828.png',
+        './images/splash/icon_828x1792.png',
+        './images/splash/icon_1334x750.png',
+        './images/splash/icon_1242x2688.png',
+        './images/splash/icon_2208x1242.png',
+        './images/splash/icon_1125x2436.png',
+        './images/splash/icon_1242x2208.png',
+        './images/splash/icon_2732x2048.png',
+        './images/splash/icon_2688x1242.png',
+        './images/splash/icon_2224x1668.png',
+        './images/splash/icon_750x1334.png',
+        './images/splash/icon_2048x2732.png',
+        './images/splash/icon_2388x1668.png',
+        './images/splash/icon_1668x2224.png',
+        './images/splash/icon_640x1136.png',
+        './images/splash/icon_1668x2388.png',
+        './images/splash/icon_2048x1536.png',
+        './images/splash/icon_1536x2048.png'
+    ];
+}
 
 const assets = [
     './',
@@ -153,7 +182,8 @@ const assets = [
     './images/dark-Logo_S5.png',
     './images/favicon.ico',
     './images/light-Logo_S5.png',
-    './images/Logo_S5_square.png'
+    './images/Logo_S5_square.png',
+    ...iOsIcons
 ];
 
 self.addEventListener('install', event =>
