@@ -1,4 +1,6 @@
-﻿class VersionModel {
+﻿import { Database } from './database.js';
+
+export class VersionModel {
     get storeName() {
         return 's5-versions';
     }
@@ -39,7 +41,7 @@
     }
 }
 
-class VersionField {
+export class VersionField {
     constructor(version = null, files = [], id = null) {
         if (id)
             this.id = id;

@@ -1,24 +1,4 @@
-﻿@font-face {
-    font-family: 'Antipasto';
-    src: url('fonts/antipasto_regular-webfont.eot');
-    src: url('fonts/antipasto_regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/antipasto_regular-webfont.woff2') format('woff2'),
-         url('fonts/antipasto_regular-webfont.woff') format('woff'),
-         url('fonts/antipasto_regular-webfont.ttf') format('truetype'),
-         url('fonts/antipasto_regular-webfont.svg#antipastoregular') format('svg');
-}
-
-@font-face {
-    font-family: 'Roboto';
-    src: url('fonts/roboto-light-webfont.eot');
-    src: url('fonts/roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/roboto-light-webfont.woff2') format('woff2'),
-         url('fonts/roboto-light-webfont.woff') format('woff'),
-         url('fonts/roboto-light-webfont.ttf') format('truetype'),
-         url('fonts/roboto-light-webfont.svg#robotolight') format('svg');
-}
-
-@keyframes rotating {
+﻿@keyframes rotating {
     from {
         transform: rotate(0deg);
     }

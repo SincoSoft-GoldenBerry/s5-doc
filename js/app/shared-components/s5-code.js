@@ -1,4 +1,7 @@
-﻿class CodeViewer extends HTMLElement {
+﻿export class CodeViewer extends HTMLElement {
+    static get tag() {
+        return 's5-code';
+    }
 
     constructor() {
         super();
@@ -123,6 +126,7 @@
             padding: 15px;
             overflow-x: auto;
             background-color: #1e1e1e;
+            border-radius: 5px;
         }
         
         .character { color: #FFFFFF; }
@@ -214,5 +218,3 @@
         this.dispatchEvent(event);
     }
 }
-
-customElements.define('s5-code', CodeViewer);

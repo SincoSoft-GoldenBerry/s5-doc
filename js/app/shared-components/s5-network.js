@@ -1,4 +1,7 @@
-﻿class Network extends HTMLElement {
+﻿export class Network extends HTMLElement {
+    static get tag() {
+        return 's5-network';
+    }
 
     get isonline() {
         return this._online;
@@ -105,5 +108,3 @@
         window.addEventListener('offline', comprobarConexion);
     }
 }
-
-customElements.define('s5-network', Network);

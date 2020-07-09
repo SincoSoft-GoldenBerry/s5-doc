@@ -1,14 +1,15 @@
-﻿(w => {
-    w['readCookie'] = name => {
+﻿export class Cookies {
+    read(name) {
         name = name.replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
     
-        const regex = new RegExp(`(?:^|;)\\s?${name}=(.*?)(?:;|$)`, 'i'),
-            match = document.cookie.match(regex);
+        const regex = new RegExp(`(?:^|;)\\s?${name}=(.*?)(?:;|$)`, 'i');
+
+        const match = document.cookie.match(regex);
     
         return match && unescape(match[1]);
-    };
+    }
 
-    const deleteAllCookies = () => {
+    _deleteAll() {
         const cookies = document.cookie.split(";");
 
         cookies.forEach(cookie => {
@@ -18,10 +19,10 @@
         });
     }
 
-    w['writeCookie'] = (name, value) => {
-        deleteAllCookies();
+    write(name, value) {
+        this._deleteAll();
         const fecha = new Date();
         fecha.setFullYear(fecha.getFullYear() + 1);
         document.cookie = `${name}=${value};expires=${fecha.toGMTString()}`;
-    };
-})(window);
+    }
+}

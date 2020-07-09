@@ -1,7 +1,7 @@
 ﻿self.importScripts('./version.js');
 
 const { v1, v2 } = self['app-version'];
-const app = '0.1.9'; //Toca cambiar a mano para refrescar versión. El importScripts se cachea solo y no deja cargarlo con ?v=
+const app = '0.1.11'; //Toca cambiar a mano para refrescar versión. El importScripts se cachea solo y no deja cargarlo con ?v=
 
 const staticCacheName = `s5-static-v${app}`;
 const dynamicCacheName = `s5-dynamic-v${app}`;
@@ -47,28 +47,39 @@ if (iOS) {
 const assets = [
     './',
     './manifest.json',
+    './menu.json',
     './index.html',
     './offline.html',
     './version.js',
 
-    './js/components/prototypes.js',
-    './js/components/s5.autocomplete.js',
-    './js/components/s5.icons.js',
-    './js/custom-components/s5-version.js',
-    './js/custom-components/s5-modal.js',
-    './js/custom-components/s5-network.js',
-    './js/custom-components/s5-code.js',
-    './js/code.js',
-    './js/components.js',
-    './js/cookies.js',
-    './js/index.js',
-    './js/init.js',
-    './js/register.js',
-    './js/version-loader.js',
+    './js/app/app.js',
+    './js/app/custom-components-definer.js',
+    './js/app/enums/app-urls.js',
+    './js/app/shared-components/s5-code.js',
+    './js/app/shared-components/s5-icon-viewer.js',
+    './js/app/shared-components/s5-modal.js',
+    './js/app/shared-components/s5-network.js',
+    './js/app/shared-components/s5-version.js',
+    './js/app/views/code.js',
+    './js/app/views/components.js',
+    './js/app/views/header.js',
+    './js/app/views/index.js',
+    './js/app/views/who.js',
+    './js/app/views/components/otros.js',
+    './js/app/views/components/prototypes.js',
+    './js/app/views/components/s5.autocomplete.js',
+    './js/app/views/components/s5.icons.js',
+    './js/app/views/header/menu-item.js',
+    './js/app/views/header/menu.js',
+    './js/app/views/standard/standard-element.js',
+    './js/helpers/cookies.js',
+    './js/helpers/register.js',
+    './js/helpers/theme-chooser.js',
+    './js/helpers/version-loader.js',
     './js/model/database.js',
     './js/model/version-model.js',
-    './js/theme-chooser.js',
-    './js/who.js',
+    './js/gateway.js',
+
     'https://data.jsdelivr.com/v1/package/npm/s5-js',
     `https://cdn.jsdelivr.net/npm/s5-js@${v1}/s5.js`,
     `https://cdn.jsdelivr.net/npm/s5-js@${v2}/s5.js`,
@@ -142,21 +153,6 @@ const assets = [
     './css/fa/webfonts/fa-solid-900.ttf',
     './css/fa/webfonts/fa-solid-900.woff',
     './css/fa/webfonts/fa-solid-900.woff2',
-    './css/fonts/antipasto_regular-webfont.eot',
-    './css/fonts/antipasto_regular-webfont.svg',
-    './css/fonts/antipasto_regular-webfont.ttf',
-    './css/fonts/antipasto_regular-webfont.woff',
-    './css/fonts/antipasto_regular-webfont.woff2',
-    './css/fonts/glyphicons-halflings-regular.eot',
-    './css/fonts/glyphicons-halflings-regular.svg',
-    './css/fonts/glyphicons-halflings-regular.ttf',
-    './css/fonts/glyphicons-halflings-regular.woff',
-    './css/fonts/glyphicons-halflings-regular.woff2',
-    './css/fonts/roboto-light-webfont.eot',
-    './css/fonts/roboto-light-webfont.svg',
-    './css/fonts/roboto-light-webfont.ttf',
-    './css/fonts/roboto-light-webfont.woff',
-    './css/fonts/roboto-light-webfont.woff2',
 
     './css/variables/buttons.css',
     './css/variables/dark.css',
@@ -213,7 +209,7 @@ self.addEventListener('activate', event =>
 );
 
 self.addEventListener('fetch', event => {
-    if (!/ping\.json/i.test(event.request.url))
+    if (!/ping\.json|sw\.js/i.test(event.request.url))
         event.respondWith(
             caches
                 .match(event.request, { ignoreVary: true })

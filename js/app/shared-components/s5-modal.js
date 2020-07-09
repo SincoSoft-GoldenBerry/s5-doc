@@ -1,4 +1,8 @@
-﻿class Modal extends HTMLElement {
+﻿export class Modal extends HTMLElement {
+    static get tag() {
+        return 's5-modal';
+    }
+
     get content() {
         return this._content;
     }
@@ -168,5 +172,3 @@
         new s5.utilities.dragDrop(this.wrapper.querySelector('.modal'), this.wrapper, this.wrapper.querySelector('.modal-title'));
     }
 }
-
-customElements.define('s5-modal', Modal);

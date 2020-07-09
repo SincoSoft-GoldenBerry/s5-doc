@@ -49,6 +49,8 @@
     <link rel="shortcut icon" href="images/favicon.ico" />
     <link rel="manifest" href="manifest.json" />
 
+    <link rel="canonical" href="https://sincoerp.com/S5" />
+
     <!-- Soporte para iOS -->
     <meta name="apple-touch-fullscreen" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="#0a0a0a" class="meta-theme" />
@@ -77,20 +79,63 @@
     <link href="images/splash/icon_2048x1536.png"  rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" />
     <link href="images/splash/icon_1536x2048.png"  rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
 
+    <!-- Preloads -->
+    <link media="all" rel="preload" href="css/variables/buttons.css" as="style" />
+    <link media="all" rel="preload" href="css/variables/light.css" as="style" />
+    <link media="all" rel="preload" href="css/scroll.css" as="style" />
+    <link media="all" rel="preload" href="css/default.css" as="style" />
+    <link media="all" rel="preload" href="css/header.css" as="style" />
+    <link media="all" rel="preload" href="css/nav.css" as="style" />
+    <link media="all" rel="preload" href="css/content.css" as="style" />
+    <link media="all" rel="preload" href="css/footer.css" as="style" />
+    <link media="all" rel="preload" href="css/code.css" as="style" />
+    <link media="all" rel="preload" href="css/component.css" as="style" />
+    <link media="all" rel="preload" href="css/components/s5.autocomplete.css" as="style" />
+    <link media="all" rel="preload" href="css/fa/css/all.min.css" as="style" />
+
+    <link crossorigin rel="preload" href="js/app/app.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/custom-components-definer.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/enums/app-urls.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/shared-components/s5-code.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/shared-components/s5-icon-viewer.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/shared-components/s5-modal.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/shared-components/s5-network.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/shared-components/s5-version.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/code.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/components.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/header.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/index.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/who.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/components/otros.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/components/prototypes.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/components/s5.autocomplete.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/components/s5.icons.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/header/menu-item.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/header/menu.js" as="script" />
+    <link crossorigin rel="preload" href="js/app/views/standard/standard-element.js" as="script" />
+    <link crossorigin rel="preload" href="js/helpers/cookies.js" as="script" />
+    <link crossorigin rel="preload" href="js/helpers/register.js" as="script" />
+    <link crossorigin rel="preload" href="js/helpers/theme-chooser.js" as="script" />
+    <link crossorigin rel="preload" href="js/helpers/version-loader.js" as="script" />
+    <link crossorigin rel="preload" href="js/model/database.js" as="script" />
+    <link crossorigin rel="preload" href="js/model/version-model.js" as="script" />
+    <link crossorigin rel="preload" href="js/gateway.js" as="script" />
+    <link crossorigin rel="preload" href="sw.js" as="script" />
+    <link crossorigin rel="preload" href="version.js" as="script" />
+
     <!-- Estilos -->
-    <link media="all" rel="preload" href="css/variables/buttons.css" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/variables/light.css" id="theme" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/scroll.css" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/default.css" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/header.css" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/nav.css" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/content.css" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/footer.css" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/code.css" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/component.css" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/components/s5.icons.css" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/components/s5.autocomplete.css" as="style" onload="this.rel='stylesheet'" />
-    <link media="all" rel="preload" href="css/fa/css/all.min.css" as="style" onload="this.rel='stylesheet'" />
+    <link rel="stylesheet" href="css/variables/buttons.css" />
+    <link rel="stylesheet" href="css/variables/light.css" id="theme" />
+    <link rel="stylesheet" href="css/scroll.css" />
+    <link rel="stylesheet" href="css/default.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/content.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link rel="stylesheet" href="css/code.css" />
+    <link rel="stylesheet" href="css/component.css" />
+    <link rel="stylesheet" href="css/components/s5.autocomplete.css" />
+    <link rel="stylesheet" href="css/fa/css/all.min.css" />
 
     <link rel="dns-prefetch" href="https://data.jsdelivr.com" />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
@@ -98,86 +143,15 @@
     <!-- Javascript -->
     <script async src="https://cdn.jsdelivr.net/npm/s5-js@2.0.26/s5.min.js"></script>
 
-    <script async src="js/model/database.js"></script>
-    <script async src="js/model/version-model.js"></script>
-    <script async src="js/version-loader.js"></script>
-    <script async src="js/cookies.js"></script>
     <script async src="version.js"></script>
-    <script async src="js/theme-chooser.js"></script>
+    <script async type="module" src="js/gateway.js"></script>
 
-    <script async src="js/custom-components/s5-version.js"></script>
-    <script async src="js/custom-components/s5-network.js"></script>
-    <script async src="js/custom-components/s5-code.js"></script>
-    <script async src="js/custom-components/s5-modal.js"></script>
-
-    <script async src="js/register.js"></script>
-    <script async src="js/init.js"></script>
 </head>
 
 <body class="light">
-    <header>
-        <section class="btn-menu-container">
-            <button type="button" class="navbar-button">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </section>
-        <section class="img-logo">
-            <img src="images/light-Logo_S5.png" alt="S5" height="30" />
-        </section>
-        <ul id="nav">
-            <li class="current" href="#index">
-                <a class="nav-link">Inicio</a>
-            </li>
-            <li class="nav-dropdown-container">
-                <a class="">Componentes</a>
-                <span class="arrow"></span>
-                <ul class="nav-dropdown right">
-                    <li class="js" href="#components-prototypes"><a class="nav-link">Object, String, Array & JSON Prototypes</a></li>
-                    <li class="icons" href="#components-s5.icons"><a class="nav-link">Íconos SVG</a></li>
-                    <li class="complete" href="#components-s5.autocomplete"><a class="nav-link">Autocomplete</a></li>
-                    <li class="other" href="#components-otros"><a class="nav-link">Otros</a></li>
-                </ul>
-            </li>
-            <li class="nav-dropdown-container">
-                <a class="">¡El código!</a>
-                <span class="arrow"></span>
-                <ul class="nav-dropdown right codigo">
-                    <li class="code" href="#code-s5.js"><a class="nav-link">s5.js (v1)</a><aside class="v1"></aside></li>
-                    <li class="code" href="#code-v2/s5.js"><a class="nav-link">s5.js (v2)</a><aside class="v2"></aside></li>
-                    <li class="request" href="#code-v2/s5.request.js"><a class="nav-link">s5.request.js</a><aside class="v2"></aside></li>
-                    <li class="icons" href="#code-s5.icons.js"><a class="nav-link">s5.icons.js</a><aside class="v1"></aside></li>
-                    <li class="drag" href="#code-s5.dragdrop.js"><a class="nav-link">s5.dragdrop.js</a><aside class="v1"></aside></li>
-                    <li class="complete" href="#code-s5.autocomplete.js"><a class="nav-link">s5.autocomplete.js</a><aside class="v1"></aside></li>
-                    <li class="tour" href="#code-s5.tour.js"><a class="nav-link">s5.tour.js</a><aside class="v1"></aside></li>
-                    <li class="prog" href="#code-s5.progress.circular.js"><a class="nav-link">s5.progress.circular.js</a><aside class="v1"></aside></li>
-                    <li class="switch" href="#code-s5.switch.js"><a class="nav-link">s5.switch.js</a><aside class="v1"></aside></li>
-                    <li class="noti" href="#code-s5.notifications.js"><a class="nav-link">s5.notifications.js</a><aside class="v1"></aside></li>
-                    <li class="next" href="#code-s5.carousel.js"><a class="nav-link">s5.carousel.js</a><aside class="v1"></aside></li>
-                </ul>
-            </li>
-            <li href="#who">
-                <a class="nav-link">¿Quiénes somos?</a>
-            </li>
-            <li class="nav-dropdown-container">
-                <a class=""><i class="fa fa-sun current-theme"></i><span>Tema</span></a>
-                <span class="arrow"></span>
-                <ul class="nav-dropdown right">
-                    <li class="light"><a class="nav-link" mode="light">Light</a></li>
-                    <li class="dark"><a class="nav-link" mode="dark">Dark</a></li>
-                </ul>
-            </li>
-        </ul>
-    </header>
-    <aside class="sidebar-menu-bg"></aside>
-    <section class="sidebar-menu"></section>
-    <section class="content">
-        <div style="padding: 50px 30px; font-size: 1.2em;">
-            Cargando contenido...
-        </div>
-    </section>
+    <app-header></app-header>
+    
+    <section class="content"></section>
     <aside class="new-version hidden">
         <i class="far fa-laugh"></i>
         <div>
